@@ -1,0 +1,70 @@
+def times_ten(x):
+  return x * 10
+
+times_ten(50)
+
+
+def both_non_zero(a, b):
+  return a != 0 and b != 0
+
+both_non_zero(1, 2)
+
+both_non_zero(1, 0)
+
+
+def sum(n):
+  if n == 1:
+    return 1
+  else:
+    return n + sum(n - 1)
+
+sum(10)
+
+
+def sum(n):
+  return (n * (n + 1)) // 2
+
+sum(10)
+
+
+def power(x, n):
+  if n == 0:
+    return 1
+  else:
+    if n == 1:
+      return x
+    else:
+      return x * power(x, n - 1)
+
+power(2, 5)
+
+
+def power(x, n):
+  if n == 0:
+    return 1
+  elif n == 1:
+    return x
+  else:
+    return x * power(x, n - 1)
+
+power(2, 5)
+
+
+def is_consonant(s):
+  return not is_vowel(s)
+
+is_consonant('r')
+
+is_consonant('e')
+
+
+def factorial(x):
+  if x < 0:
+    return 0
+  elif x == 0:
+    return 1
+  else:
+    return x * factorial(x - 1)
+
+factorial(-1)
+
