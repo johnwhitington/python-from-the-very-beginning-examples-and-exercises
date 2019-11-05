@@ -48,14 +48,13 @@ import random
 
 def guessing_game():
     target = random.randint(1, 100)
-    answer = 0
+    guess = int(input('Guess a number between 1 and 100\n'))
     tries = 0
-    while answer != target:
-        answer = int(input('Guess a number between 1 and 100\n'))
+    while guess != target:
         tries = tries + 1
-        if answer < target:
-            print('Higher!')
-        elif answer > target:
-            print('Lower!')
+        if guess < target:
+            guess = int(input('Higher!\n'))
+        elif guess > target:
+            guess = int(input('Lower!\n'))
     print('Correct! You took ' + str(tries) + ' guesses.')
 
