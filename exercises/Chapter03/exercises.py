@@ -2,6 +2,7 @@ def print_numbers_reversed(n):
     for x in range(n, 0, -1):
       print(x)
 
+
 def times_table(n):
     column_width = len(str(n * (n - 1))) + 1
     for y in range(1, n + 1):
@@ -9,12 +10,14 @@ def times_table(n):
             print(x * y, end=' ' * (column_width - len(str(x * y))))
         print('')
 
+
 def count_spaces(s):
     c = 0
     for x in s:
         if x == ' ':
             c = c + 1
     return c
+
 
 def print_spaced(s):
     l = len(s)
@@ -24,26 +27,18 @@ def print_spaced(s):
         if l > 0: print(' ', end='')
     print('')
 
-#Uses enumerate, probably leave out.
-def print_spaced(s):
-    l = len(s)
-    for i, x in enumerate(s):
-        print(x, end='')
-        if i < l - 1: print(' ', end='')
-    print('')
 
-#Use prompt in input, add \n to keep the same
 def ask_for_password():
   entered = ''  
   while entered != 'please':
     entered = input('Please enter the password\n')
 
-#remove the variable
+
 def ask_for_password():
     while input('Please enter the password\n') != 'please':
         pass
 
-#Q6: guessing_game
+
 import random
 
 def guessing_game():
