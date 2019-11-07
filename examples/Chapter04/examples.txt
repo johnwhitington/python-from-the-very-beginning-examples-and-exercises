@@ -1,0 +1,102 @@
+These examples can be cut-and-pasted into Python
+
+l = ['zero', 'one', 'two', 'three', 'four', 'five']
+
+l[0]
+
+l[5]
+
+l[6]
+
+
+l = ['zero', 'one', 'two', 'three', 'four', 'five']
+
+for x in l:
+    print(x + ' has ' + str(len(x)) + ' letters.')
+
+
+list(range(1, 10))
+
+list(range(1, 10, 3))
+
+
+for x in list(range(1, 5)):
+    print(x)
+
+
+l = ['zero', 'one', 'two', 'three', 'four', 'five']
+
+l[1:4]
+
+l[1:6]
+
+l[0:6]
+
+
+l = ['zero', 'one', 'two', 'three', 'four', 'five']
+
+l[:4]
+
+l[1:]
+
+
+l = ['zero', 'one', 'two', 'three', 'four', 'five']
+
+l.append('six')
+
+l
+
+
+l1 = [1, 2, 3]
+
+l2 = [4, 5, 6]
+
+l1 + l2
+
+
+l =['zero', 'one', 'two', 'three', 'four', 'five']
+
+l[0] = 'nought'
+
+l
+
+
+l = ['zero', 'one', 'two', 'three', 'four', 'five']
+
+del l[1]
+
+l
+
+
+l = ['zero', 'one', 'two', 'three', 'four', 'five']
+
+l.remove('two')
+
+l
+
+
+l = ['zero', 'one', 'three', 'four', 'five']
+
+l.insert(2, 'two')
+
+l
+
+
+l = ['zero', 'one', 'two', 'three', 'four', 'five']
+
+'two' in l
+
+'six' in l
+
+
+l = ['zero', 'one', 'two', 'three', 'four', 'five']
+
+l.index('two')
+
+
+l = ['zero', 'one', 'two', 'three', 'four', 'five']
+
+l.count('zero')
+
+l.count('six')
+
