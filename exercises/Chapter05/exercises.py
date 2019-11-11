@@ -64,7 +64,8 @@ def palindromes(l):
     return list(filter(is_palindromic, l))
 
 def palindromic_numbers_in(x, y):
-    return list(map(int, palindromes(list(map(str, list(range(x, y)))))))
+    ps = palindromes(list(map(str, list(range(x, y)))))
+    return list(map(int, ps))
 
 #Q8
 def clip_list(l):
