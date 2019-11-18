@@ -1,0 +1,94 @@
+t = (1, 'one')
+t2 = (1, (1, 2), (1, 2, 3))
+
+a, b = t
+a
+b
+c, d, e = t2
+c
+d
+e
+
+
+
+def f(x):
+    a, b = x
+    return a + b
+
+pair = (1, 2)
+f(pair)
+
+
+t2 = (1, (1, 2), (1, 2, 3))
+t2[0]
+t2[::-1]
+
+
+t2 = (1, (1, 2), (1, 2, 3))
+len(t2)
+len(t2[1])
+
+
+d = {}
+d[1] = 4
+d
+d[2] = 2
+d[3] = 2
+d[4] = 3
+d[5] = 2
+d[6] = 2
+d
+d[6] = 8
+
+
+d = {1: 4, 2: 2, 3: 2, 4: 3, 5: 1, 6: 2}
+
+
+{1: 4, 2: 2} == {2: 2, 1: 4}
+
+
+d = {1: 4, 2: 2, 3: 2, 4: 3, 5: 1, 6: 2}
+1 in d
+10 in d
+10 not in d
+
+
+d = {1: 4, 2: 2, 3: 2, 4: 3, 5: 1, 6: 2}
+del d[2]
+d
+
+
+for k, v in d.items():
+    print(f'{k} is mapped to {v}')
+
+
+for k in d:
+    print(f'{k} is mapped to {d[k]}')
+
+
+d = dict([(1, 'one'), (2, 'two'), (3, 'three')])
+d
+d = dict([(1, 'ONE'), (1, 'one'), (2, 'two'), (3, 'three')])
+d
+
+
+s = {1, 2, 3}
+s2 = set([1,2,3,2,1])
+s2
+s3 = set('qwertyuiop')
+s3
+empty_set = set()
+empty_set
+
+s3 = set('qwertyuiop')
+'e' in s3
+'z' in s3
+
+
+a = {1, 2, 3, 4}
+b = {1, 2, 5, 6}
+a | b
+a & b
+a ^ b
+a - b
+
