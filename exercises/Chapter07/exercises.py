@@ -55,7 +55,7 @@ def remove_zeroes(l):
 
 #7
 def reverse_dict(d):
-    {v:k for k, v in d.items()}
+    return {v:k for k, v in d.items()}
 
 #8
 def letter_set(l):
@@ -97,8 +97,8 @@ def dset_minus(a, b):
     return result
 
 def dset_exclusive_or(a, b):
-    result = {}
-    for x in a:
+    return dset_or(dset_minus(a, b), dset_minus(b, a))
+
 
 #10
 def comp_and(a, b):
