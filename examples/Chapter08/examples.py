@@ -1,3 +1,13 @@
+def found_values(l, d):
+    output = []
+    for k in l:
+        v = d.get(k)
+        if v != None:
+            output.append(v)
+    return output
+
+
+
 >>> def f(x, y): return x + y + z
 ... 
 >>> f(1, 2)
