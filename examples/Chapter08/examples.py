@@ -48,23 +48,24 @@ def safe_lookup(d, k):
 
 import random
 
+def get_guess(message):
+    try:
+        this_guess = int(input(message))
+    except ValueError:
+        print('Not a number!')
+        return get_guess('')
+    else:
+        if this_guess < 1 or this_guess > 100:
+            print('Number not in range 1..100')
+            return get_guess('')
+        return this_guess
+
 def guessing_game():
-    def get_guess(message):
-        try:
-            this_guess = int(input(message))
-        except ValueError:
-            print('Not a number!')
-            get_guess(message)
-        else:
-            if this_guess < 1 or this_guess > 100:
-                print('Number not in range 1..100')
-                get_guess(message)
-            return this_guess
     target = random.randint(1, 100)
     guess = get_guess('Guess a number between 1 and 100\n')
-    tries = 0
+    tries = 1
     while guess != target:
-        print(f'target={target}, guess = {guess}')
+        print(f'target: {target}, guess: {guess}')
         tries = tries + 1
         if guess < target:
             guess = get_guess('Higher!\n')
