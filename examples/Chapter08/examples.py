@@ -1,3 +1,25 @@
+>>> None
+>>> type(None)
+>>> def f(a, b): a + b
+>>> f(1, 2)
+>>> f(1, 2) == None
+
+def g(a):
+    if a > 0:
+        return a
+    else:
+        0
+
+list(map(g, [-1,0,1,2,3]))
+
+d = {1 : 'one', 2 : 'two', 3 : 'three'}
+d[0]
+
+d.get(0)
+v = d.get(0)
+print(v)
+
+
 def found_values(l, d):
     output = []
     for k in l:
@@ -6,25 +28,33 @@ def found_values(l, d):
             output.append(v)
     return output
 
+found_values([1, 2, 3], {1 : 'one', 2 : 'two'})
+
+d = {1 : 'one', 2 : 'two', 3 : 'three'}
+d[0]
 
 
->>> def f(x, y): return x + y + z
-... 
->>> f(1, 2)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "<stdin>", line 1, in f
-NameError: name 'z' is not defined
->>> z = 3
->>> f(1, 2)
-6
+def f(x, y): return x + y + z
+
+f(1, 2)
+
+z = 3
+f(1, 2)
 
 def safe_lookup(d, k):
     try:
         return d[k]
     except KeyError as e:
-        print(f'FATAL ERROR: Bad key {k} in dict {d}')
-        raise e
+        print(f'Could not find value for key ' + str(k))
+        return -1
+
+safe_lookup({1 : 'one', 2 : 'two', 3 : 'three'}, 0)
+
+def add3(x, y): return x + y + z
+
+add3(1, 2)
+z = 10
+add3(1, 2)
 
 
 def repeated(e, length):
@@ -33,9 +63,26 @@ def repeated(e, length):
     for x in range(0, length): l.append(e)
     return l
 
+repeated(1, 10)
+repeated(1, -10)
 
 def safe_lookup(d, k):
     try:
+        return d[k]
+    except KeyError as e:
+        print(f'Could not find value for key ' + str(k))
+        raise e
+
+def safe_lookup(d, k):
+    try:
+        return d[k]
+    except Exception:
+        print('Unknown error in safe_lookup')
+        raise e
+
+def safe_lookup(d, k):
+    try:
+        print('attempting key lookup')
         result = d[k]
     except Exception as e:
         print('Unknown error in safe_lookup')
@@ -65,7 +112,6 @@ def guessing_game():
     guess = get_guess('Guess a number between 1 and 100\n')
     tries = 1
     while guess != target:
-        print(f'target: {target}, guess: {guess}')
         tries = tries + 1
         if guess < target:
             guess = get_guess('Higher!\n')
