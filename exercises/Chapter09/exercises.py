@@ -46,10 +46,72 @@ def copy_file(a, b):
         print(f_in.read(), file=f_out, end='')
 
 #7
-#See textstatsQ7.py
+def is_full_stop(s):
+    return s == '.'
+
+def stats_from_file(f):
+    lines = 0
+    characters = 0
+    words = 0
+    sentences = 0
+    histogram = {}
+    for line in f:
+        lines += 1
+        characters += len(line)
+        words += len(line.split())
+        sentences += len(list(filter(is_full_stop, list(line))))
+        for x in line:
+            current = 0
+            if x in histogram:
+                current = histogram[x]
+            histogram[x] = current + 1
+    return (lines, characters, words, sentences, histogram)
+
+def stats_from_filename(filename):
+    with open(filename) as f:
+        return stats_from_file(f)
+
+gregor_stats = stats_from_filename('gregor.txt')
 
 #8
-#See textstatsQ8.py
+import string
+
+def cleansplit(line):
+    return [s.strip(string.punctuation).lower() for s in line.split()]
+
+def is_full_stop(s):
+    return s == '.'
+
+def stats_from_file(f):
+    lines = 0
+    characters = 0
+    words = 0
+    sentences = 0
+    histogram = {}
+    word_histogram = {}
+    for line in f:
+        lines += 1
+        characters += len(line)
+        words += len(line.split())
+        sentences += len(list(filter(is_full_stop, list(line))))
+        for x in line:
+            current = 0
+            if x in histogram:
+                current = histogram[x]
+            histogram[x] = current + 1
+        for x in cleansplit(line):
+            current = 0
+            if x in word_histogram:
+                current = word_histogram[x]
+            word_histogram[x] = current + 1
+    return (lines, characters, words, sentences, histogram, word_histogram)
+
+def stats_from_filename(filename):
+    with open(filename) as f:
+        return stats_from_file(f)
+
+gregor_stats = stats_from_filename('gregor.txt')
+
 
 #9
 import string
