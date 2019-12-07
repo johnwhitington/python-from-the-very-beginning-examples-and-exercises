@@ -46,8 +46,34 @@ def copy_file(a, b):
         print(f_in.read(), file=f_out, end='')
 
 #7
+#See textstatsQ7.py
 
 #8
+#See textstatsQ8.py
 
 #9
+import string
+
+def cleansplit(line):
+    return [s.strip(string.punctuation).lower() for s in line.split()]
+
+def search_word(filename, word):
+    lines = []
+    with open(filename) as f:
+        lines = f.readlines()
+    words = list(map(cleansplit, lines))
+    for n, ws in enumerate(words):
+        if word in ws:
+            print(f'{n}: ', end='')
+            print(lines[n], end='')
+
+#10
+def top(filename):
+    lines = []
+    with open(filename) as f:
+        lines = f.readlines()
+    while(len(lines) > 0):
+        for l in lines[:5]: print(l, end='')
+        lines = lines[5:]
+        enter = input()
 
