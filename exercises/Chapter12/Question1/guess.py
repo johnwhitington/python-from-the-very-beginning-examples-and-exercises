@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
 import random
 import getpass
+import sys
 
 def guessing_game(maxnum):
     target = int(getpass.getpass('What is the target number?'))
@@ -13,8 +13,6 @@ def guessing_game(maxnum):
         elif guess > target:
             guess = int(input('Lower!\n'))
     print('Correct! You took ' + str(tries) + ' guesses.')
-
-import sys
 
 if len(sys.argv) > 1:
     guessing_game(sys.argv[1])
