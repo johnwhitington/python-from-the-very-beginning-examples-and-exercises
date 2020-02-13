@@ -1,32 +1,93 @@
 You can copy and paste these code samples into Python.
 
-print('Just like this')
+import turtle
+t = turtle.Turtle()
+
+t.foward(100)
+
+t.forward(100)
+t.right(90)
+t.forward(100)
+t.right(90)
+t.forward(100)
+t.right(90)
+t.forward(100)
+
+def square(x):
+    for _ in range(4):
+        t.fd(x)
+        t.rt(90)
+
+for _ in range(10):
+    square(t)
+    t.rt(360/10)
+
+t.home()
+t.clear()
+
+def star(l, n):
+    for _ in range(n):
+        t.fd(l)
+        t.bk(l)
+        t.rt(360/n)
+
+def star(x, y, l, n):
+    t.penup()
+    t.home()
+    t.fd(x)
+    t.lt(90)
+    t.fd(y)
+    t.pendown()
+    for _ in range(n):
+        t.fd(l)
+        t.bk(l)
+        t.rt(360/n)
+
+import random
+
+for _ in range(20):
+    star(random.randint(-300, 300),
+         random.randint(-300, 300),
+         random.randint(10, 150),
+         random.randint(3, 30))
+
+def star(x, y, l, n):
+    t.penup()
+    t.goto(x, y)
+    t.setheading(random.randint(0, 359))
+    t.pendown()
+    for _ in range(n):
+        t.fd(l)
+        t.bk(l)
+        t.rt(360/n)
+
+t.pensize(20)
+star(0, 0, 200, 7)
+t.pensize(15)
+t.color(0.25, 0.25, 0.25)
+star(0, 0, 200, 7)
+t.pensize(10)
+t.color(0.5, 0.5, 0.5)
+star(0, 0, 200, 7)
+t.pensize(5)
+t.color(0.75, 0.75, 0.75)
+star(0, 0, 200, 7)
+t.pensize(2)
+t.color(1, 1, 1)
+star(0, 0, 200, 7)
+t.hideturtle()
 
 
-print(12)
+t.begin_fill()
+t.fd(100)
+t.rt(90)
+t.fd(100)
+t.rt(90)
+t.fd(100)
+t.rt(90)
+t.fd(100)
+t.end_fill()
+t.hideturtle()
 
-print(1 + 2 * 3)
-
-
-99 > 100
-
-4 + 3 + 2 + 1 == 10
-
-
-1 == 1 and 10 > 9
-
-1 == 1 or 9 > 10
-
-not 1 == 1
-
-1 == 2 or not 9 > 10
-
-
-type('Hello!')
-
-type(25)
-
-type(1 + 2 * 3)
-
-type(False)
+See start.py, savestars.py and clickstar.py for the rest.
 
