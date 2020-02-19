@@ -1,16 +1,12 @@
-#graph a given function given on the command line
-#multiple ones go in different colours
-#allow setting of scales from command line
 import sys
 import turtle
 import math
 
-args = sys.argv
-
 t = turtle.Turtle()
 
 if len(sys.argv) < 2:
-    args.append(turtle.Screen().textinput('Graph plotter', 'Please enter formula'))
+    print('No formula supplied')
+    sys.exit(0)
 
 def plot(f):
     t.penup()
@@ -62,10 +58,10 @@ t.speed(0)
 
 axes()
 
-for n, arg in enumerate(args[1:]):
-    t.pencolor(colors[n])
+for n, arg in enumerate(sys.argv[1:]):
+    t.pencolor(colors[n % 4])
     plot(farg(arg))
-    key(n, arg, colors[n])
+    key(n, arg, colors[n % 4])
 
 turtle.mainloop()
 
