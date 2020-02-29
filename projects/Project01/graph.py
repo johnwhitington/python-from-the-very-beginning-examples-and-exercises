@@ -17,7 +17,7 @@ def plot(f):
 
 def farg(arg):
     def f(x):
-      return(eval(arg))
+      return eval(arg)
     return f
 
 def key(n, formula_text, color):

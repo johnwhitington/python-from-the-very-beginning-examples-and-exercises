@@ -24,14 +24,12 @@ def tickmarks():
         t.fd(5)
 
 def clockface(h, m, s):
-    #Circle
     t.penup()
     t.goto(0, -300)
+    t.pensize(1)
     t.pendown()
     t.circle(300)
-    #Tickmarks
     tickmarks()
-    #Hands
     hand(200, 3, 360 / 12 * (h % 12))
     hand(280, 3, 360 / 60 * m)
     hand(295, 1, 360 / 60 * s)
