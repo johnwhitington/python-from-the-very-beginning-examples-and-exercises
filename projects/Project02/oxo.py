@@ -21,17 +21,24 @@ def wins(p, b):
           [b[3], b[5], b[7]]]
     return l in ls
 
+def taken(n, b):
+    return b[n] is not '_'
+
 def human_move(board):
     n_input = input('Position 1..9? ')
     if n_input.isdigit():
         n = int(n_input)
         if n < 1 or n > 9:
-            print('board position must be from 1..9')
+            print('Board position must be from 1..9')
             human_move(board)
         else:
-            board[n] = 'X'
+            if taken(n, board):
+                print('Position already taken')
+                human_move(board)
+            else:
+                board[n] = 'X'
     else:
-        print('not a valid board position')
+        print('Not a valid board position')
         human_move(board)
 
 def computer_move(board):
