@@ -24,6 +24,43 @@ def wins(p, b):
 def taken(n, b):
     return b[n] is not '_'
 
+def takenby(n, p, b):
+    return b[n] is not p
+
+#Tactics.
+
+#1. Win
+def tactic_win(b):
+
+#2. Block
+
+#3. Fork
+
+#4. Block fork
+
+#5. Play Centre
+def tactic_play_centre(b):
+    return try_to_take(b, [5])
+
+#6. Play opposite corner
+def tactic_play_opposite_corner
+    if takenby(1, 'X', b):
+        if try_to_take(b, [9]): return True
+    elif takenby(3, 'X', b):
+        if try_to_take(b, [7]): return True
+    elif takenby(7, 'X', b):
+        if try_to_take(b, [3]): return True
+    elif takenby(9, 'X', b):
+        return try_to_take(b, 1)
+
+#7. Play empty corner
+def tactic_empty_corner(b):
+    return try_to_take(b, [1, 3, 7, 9])
+
+#8. Play empty side
+def tactic_empty_side(b):
+    return try_to_take(b, [2, 4, 6, 8])
+
 def human_move(board):
     n_input = input('Position 1..9? ')
     if n_input.isdigit():
