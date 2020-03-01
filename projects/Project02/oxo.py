@@ -31,6 +31,7 @@ def wins(p, b):
           [b[2], b[5], b[8]],
           [b[0], b[4], b[8]],   #Diagonals
           [b[2], b[4], b[6]]]
+    #print(ls)
     return l in ls
 
 #Human player, types 1...9 to enter their X
@@ -54,14 +55,24 @@ def computer_move(board):
 #Play!
 def play(human_goes_first):
     board = emptyboard.copy()
-    while not full(board) or wins('X', b) or wins('O', b):
+    while not (full(board) or wins('X', board) or wins('O', board)):
         printboard(board)
         if human_goes_first:
             human_move(board)
         else:
             computer_move(board)
         human_goes_first = not human_goes_first
+    #print(f"full = {full(board)}, winsx = {wins('X', board)}, winso = {wins('O', board)}")
+    print('Game over. Result:')
+    if wins('X', board):
+        print('You win!')
+    elif wins('O', board):
+        print('Computer wins!')
+    else:
+        print('Draw!')
+    printboard(board)
 
+play(False)
 
 #The game tree for 3x3 noughts and crosses
 
