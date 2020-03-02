@@ -29,21 +29,45 @@ def takenby(n, p, b):
 
 #Tactics.
 
+lines = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
+         [1, 4, 7], [2, 5, 8], [3, 6, 9],
+         [1, 5, 9], [3, 5, 7]]
+
+def try_to_take(b, ps):
+    for p in ps:
+        if b[p] == '_':
+            b[p] = 'X'
+            return True
+    return False
+
 #1. Win
 def tactic_win(b):
+    for l in lines:
+      bl = [b[x] for x in l]
+      if bl.count('_') == 1 and bl.count('X') == 2:
+          for x in l:
+              if b[x] == '_': b[x] = 'X'
+          return True
+    return False
 
 #2. Block
+def tactic_block(b):
+    return False
 
 #3. Fork
+def tactic_fork(b):
+    return False
 
 #4. Block fork
+def tactic_block_fork(b):
+    return False
 
 #5. Play Centre
 def tactic_play_centre(b):
     return try_to_take(b, [5])
 
 #6. Play opposite corner
-def tactic_play_opposite_corner
+def tactic_play_opposite_corner(b):
     if takenby(1, 'X', b):
         if try_to_take(b, [9]): return True
     elif takenby(3, 'X', b):
@@ -73,14 +97,38 @@ def human_move(board):
                 print('Position already taken')
                 human_move(board)
             else:
-                board[n] = 'X'
+                board[n] = 'O'
     else:
         print('Not a valid board position')
         human_move(board)
 
-def computer_move(board):
+def computer_move(b):
     print('Computer has played:')
-    board[board.index('_')] = 'O'
+    if tactic_win(b):
+        print('Used tactic_win')
+        return
+    if tactic_block(b):
+        print('Used tactic_block')
+        return
+    if tactic_fork(b):
+        print('Used tactic_fork')
+        return
+    if tactic_block_fork(b):
+        print('Used tactic_block_fork')
+        return
+    if tactic_play_centre(b):
+        print('Used tactic_centre')
+        return
+    if tactic_play_opposite_corner(b):
+        print('Used tactic_play_opposite_corner')
+        return
+    if tactic_empty_corner(b):
+        print('Used tactic_empty_corner')
+        return
+    if tactic_empty_side(b):
+        print('Used tactic_empty_side')
+        return
+    print('No tactic applied: error in tactic implementations')
 
 def play(human_goes_first):
     print('Board is numbered\n123\n456\n789\n')
@@ -98,9 +146,9 @@ def play(human_goes_first):
         human_goes_first = not human_goes_first
         printboard(board)
     print('Game over. Result:')
-    if wins('X', board):
+    if wins('O', board):
         print('You win!')
-    elif wins('O', board):
+    elif wins('X', board):
         print('Computer wins!')
     else:
         print('Draw!')
