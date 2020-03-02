@@ -1,25 +1,23 @@
 emptyboard = ['', '_', '_', '_', '_', '_', '_', '_', '_', '_']
 
+lines = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
+         [1, 4, 7], [2, 5, 8], [3, 6, 9],
+         [1, 5, 9], [3, 5, 7]]
+
 def printboard(b):
-  def printline(l):
-      for x in l: print(x, end=' ')
-      print('')
-  printline(b[1:4])
-  printline(b[4:7])
-  printline(b[7:])
+    for n, x in enumerate(b):
+       print(x, end='')
+       if n > 0 and n % 3 == 0: print('')
 
 def full(board):
     return '_' not in board
 
 def wins(p, b):
-    l = [p, p, p]
-    ls = [b[1:4], b[4:7], b[7:], #Horizontals
-          [b[1], b[4], b[7]],    #Verticals
-          [b[2], b[5], b[8]],
-          [b[3], b[6], b[9]],
-          [b[1], b[5], b[9]],    #Diagonals
-          [b[3], b[5], b[7]]]
-    return l in ls
+    win = [p, p, p]
+    for l in lines:
+        bl = [b[x] for x in l]
+        if bl == win: return True
+    return False
 
 def taken(n, b):
     return b[n] is not '_'
@@ -28,11 +26,6 @@ def takenby(n, p, b):
     return b[n] is not p
 
 #Tactics.
-
-lines = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
-         [1, 4, 7], [2, 5, 8], [3, 6, 9],
-         [1, 5, 9], [3, 5, 7]]
-
 def try_to_take(b, ps):
     for p in ps:
         if b[p] == '_':
@@ -41,18 +34,21 @@ def try_to_take(b, ps):
     return False
 
 #1. Win
-def tactic_win(b):
+def win_or_block(b, piece):
     for l in lines:
-      bl = [b[x] for x in l]
-      if bl.count('_') == 1 and bl.count('X') == 2:
-          for x in l:
-              if b[x] == '_': b[x] = 'X'
-          return True
+        bl = [b[x] for x in l]
+        if bl.count('_') == 1 and bl.count(piece) == 2:
+            for x in l:
+                if b[x] == '_': b[x] = 'X'
+            return True
     return False
+
+def tactic_win(b):
+    return win_or_block(b, 'X')
 
 #2. Block
 def tactic_block(b):
-    return False
+    return win_or_block(b, 'O')
 
 #3. Fork
 def tactic_fork(b):
