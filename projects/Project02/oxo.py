@@ -79,6 +79,21 @@ def tactic_fork(b):
     return False
 
 #4. Block fork
+
+#If position p is blank, check if filling it would make two in any row, column,
+#or diagonal for 'X'. If so, fill it with 'X'.
+def find_two_in_row(b, p):
+    if b[p] == '_':
+      #find lines p is in. If a line has one X and no Os, fill it.
+      for l in lines:
+          if p in l:
+              bl = [b[x] for x in l]
+              if bl.count('X') == 1 and bl.count('O') == 0:
+                  b[p] = 'X'
+                  return True
+    else:
+        return False
+
 def tactic_block_fork(b):
     for (l, l2, i) in intersecting_lines:
         bl = [b[x] for x in l]
@@ -86,14 +101,12 @@ def tactic_block_fork(b):
         l_fits = bl.count('_') == 2 and bl.count('O') == 1
         l2_fits = bl.count('_') == 2 and bl.count('O') == 1
         if l_fits and l2_fits and b[i] == '_':
-            #Check all empty locations in l and l2 and fill the first one
-            #which would create two-in-a-row on the board for X (forcing a block)
-            if find_two_in_row(b, l, 0): return True
-            elif find_two_in_row(b, l, 1): return True
-            elif find_two_in_row(b, l, 2): return True
-            elif find_two_in_row(b, l2, 0): return True
-            elif find_two_in_row(b, l2, 1): return True
-            elif find_two_in_row(b, l2, 2): return True
+            if find_two_in_row(b, l[0]): return True
+            elif find_two_in_row(b, l[1]): return True
+            elif find_two_in_row(b, l[2]): return True
+            elif find_two_in_row(b, l2[0]): return True
+            elif find_two_in_row(b, l2[1]): return True
+            elif find_two_in_row(b, l2[2]): return True
             else:
                 b[i] = 'X'
                 return True
@@ -192,14 +205,29 @@ def play(human_goes_first):
 
 play(True)
 
-#The game tree for 3x3 noughts and crosses
 
+#The game tree for 3x3 noughts and crosses. Lists of lists of boards etc. We do not store the actual moves after generating, just the results. Uses copying of lists etc.
+def swap_player(p):
+    if p == 'X': return 'O'
+    else: return 'X'
 
-#EXTENSIONS
+def make_next_boards(b, pl):
+    bs = []
+    for i, e in enumerate(b):
+        if e == '_':
+            new_board = b.copy()
+            new_board[i] = pl
+            bs.append(new_board)
+    return bs
 
-#The game tree for mxn noughts and crosses
+def next_move(b, pl):
+    boards = make_next_boards(b, pl)
+    return (b, list(map(next_move(swap_player pl), boards)))
 
-#A full computer player vs human for 3x3 noughts and crosses
+def game_tree(x_goes_first):
+    player = 'O'
+    if x_goes_first: player = 'X'
+    return next_move(empty_board, player)
 
 #Computer vs computer for 3x3 noughts and crosses (always a draw!)
-
+#For this, need to allow computer to play as 'X' or 'O'#For this, need to allow computer to play as 'X' or 'O'#For this, need to allow computer to play as 'X' or 'O'
