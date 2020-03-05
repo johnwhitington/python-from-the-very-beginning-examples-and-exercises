@@ -1,8 +1,24 @@
 emptyboard = ['', '_', '_', '_', '_', '_', '_', '_', '_', '_']
 
-lines = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
-         [1, 4, 7], [2, 5, 8], [3, 6, 9],
-         [1, 5, 9], [3, 5, 7]]
+h1 = [1, 2, 3]
+h2 = [4, 5, 6]
+h3 = [7, 8, 9]
+v1 = [1, 4, 7]
+v2 = [2, 5, 8]
+v3 = [3, 6, 9]
+d1 = [1, 5, 9]
+d2 = [3, 5, 7]
+
+lines = [h1, h2, h3, v1, v2, v3, d1, d2]
+
+intersecting_lines = [(h1, v1, 1), (h1, v2, 2), (h1, v3, 3),
+                      (h2, v1, 4), (h2, v2, 5), (h2, v3, 6),
+                      (h3, v1, 7), (h3, v2, 8), (h3, v3, 9),
+                      (d1, h1, 1), (d1, h2, 5), (d1, h3, 9),
+                      (d1, v1, 1), (d1, v2, 5), (d1, v3, 9),
+                      (d2, h1, 3), (d2, h2, 5), (d2, h3, 7),
+                      (d2, v1, 3), (d2, v2, 5), (d2, v3, 7),
+                      (d1, d2, 5)]
 
 def printboard(b):
     for n, x in enumerate(b):
@@ -52,10 +68,37 @@ def tactic_block(b):
 
 #3. Fork
 def tactic_fork(b):
+    for (l, l2, i) in intersecting_lines:
+        bl = [b[x] for x in l]
+        bl2 = [b[x] for x in l2]
+        l_fits = bl.count('_') == 2 and bl.count('X') == 1
+        l2_fits = bl2.count('_') == 2 and bl2.count('X') == 1
+        if l_fits and l2_fits and b[i] == '_':
+            b[i] = 'X'
+            return True
     return False
 
 #4. Block fork
+def fill_blank_two_x(l, n)
+
 def tactic_block_fork(b):
+    for (l, l2, i) in intersecting_lines:
+        bl = [b[x] for x in l]
+        bl2 = [b[x] for x in l2]
+        l_fits = bl.count('_') == 2 and bl.count('O') == 1
+        l2_fits = bl.count('_') == 2 and bl.count('O') == 1
+        if l_fits and l2_fits and b[i] == '_':
+            #Check each of the four empty spaces to see if
+            #it can make two-in-a-row for me
+            if fill_blank_two_x(l, 0): return True
+            elif fill_blank_two_x(l, 1): return True
+            elif fill_blank_two_x(l, 2): return True
+            elif fill_blank_two_x(l2, 0): return True
+            elif fill_blank_two_x(l2, 1): return True
+            elif fill_blank_two_x(l2, 2): return True
+            else:
+                b[i] = 'X'
+                return True
     return False
 
 #5. Play Centre
@@ -149,7 +192,7 @@ def play(human_goes_first):
     else:
         print('Draw!')
 
-play(False)
+play(True)
 
 #The game tree for 3x3 noughts and crosses
 
