@@ -79,8 +79,6 @@ def tactic_fork(b):
     return False
 
 #4. Block fork
-def fill_blank_two_x(l, n)
-
 def tactic_block_fork(b):
     for (l, l2, i) in intersecting_lines:
         bl = [b[x] for x in l]
@@ -88,14 +86,14 @@ def tactic_block_fork(b):
         l_fits = bl.count('_') == 2 and bl.count('O') == 1
         l2_fits = bl.count('_') == 2 and bl.count('O') == 1
         if l_fits and l2_fits and b[i] == '_':
-            #Check each of the four empty spaces to see if
-            #it can make two-in-a-row for me
-            if fill_blank_two_x(l, 0): return True
-            elif fill_blank_two_x(l, 1): return True
-            elif fill_blank_two_x(l, 2): return True
-            elif fill_blank_two_x(l2, 0): return True
-            elif fill_blank_two_x(l2, 1): return True
-            elif fill_blank_two_x(l2, 2): return True
+            #Check all empty locations in l and l2 and fill the first one
+            #which would create two-in-a-row on the board for X (forcing a block)
+            if find_two_in_row(b, l, 0): return True
+            elif find_two_in_row(b, l, 1): return True
+            elif find_two_in_row(b, l, 2): return True
+            elif find_two_in_row(b, l2, 0): return True
+            elif find_two_in_row(b, l2, 1): return True
+            elif find_two_in_row(b, l2, 2): return True
             else:
                 b[i] = 'X'
                 return True
