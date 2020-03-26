@@ -203,31 +203,48 @@ def play(human_goes_first):
     else:
         print('Draw!')
 
-play(True)
+#play(True)
 
 
-#The game tree for 3x3 noughts and crosses. Lists of lists of boards etc. We do not store the actual moves after generating, just the results. Uses copying of lists etc.
+#The game tree for 3x3 noughts and crosses.
 def swap_player(p):
     if p == 'X': return 'O'
     else: return 'X'
 
-def make_next_boards(b, pl):
+def next_boards(b, pl):
+    if wins('O', b) or wins('X', b) or full(b):
+        return (b, [])
     bs = []
     for i, e in enumerate(b):
         if e == '_':
             new_board = b.copy()
             new_board[i] = pl
             bs.append(new_board)
-    return bs
+    return (b, [next_boards(x, swap_player(pl)) for x in bs])
 
-def next_move(b, pl):
-    boards = make_next_boards(b, pl)
-    return (b, list(map(next_move(swap_player pl), boards)))
+def game_tree(player):
+    return next_boards(emptyboard, player)
 
-def game_tree(x_goes_first):
-    player = 'O'
-    if x_goes_first: player = 'X'
-    return next_move(empty_board, player)
+x_game_tree = game_tree('X')
+
+#Calculate number of games in which x wins, o wins, or it is a draw
+def sum_game_tree(f, t):
+    b, bs = t
+    ns = f(b)
+    for sb in bs:
+        ns = ns + sum_game_tree(f, sb)
+    return ns
+
+def f(b): return wins('X', b)
+xwins = sum_game_tree(f, x_game_tree)
+
+def f(b): return wins('O', b)
+owins = sum_game_tree(f, x_game_tree)
+
+def f(b): return not wins('X', b) and not wins('O', b) and full(b)
+draw = sum_game_tree(f, x_game_tree)
+
+print(f'O wins {owins}, X wins {xwins}, draw {draw}')
 
 #Computer vs computer for 3x3 noughts and crosses (always a draw!)
-#For this, need to allow computer to play as 'X' or 'O'#For this, need to allow computer to play as 'X' or 'O'#For this, need to allow computer to play as 'X' or 'O'
+#For this, need to allow computer to play as 'X' or 'O'
