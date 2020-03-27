@@ -1,32 +1,32 @@
-emptyboard = ['', '_', '_', '_', '_', '_', '_', '_', '_', '_']
+emptyboard = ['_', '_', '_', '_', '_', '_', '_', '_', '_']
 
-h1 = [1, 2, 3]
-h2 = [4, 5, 6]
-h3 = [7, 8, 9]
-v1 = [1, 4, 7]
-v2 = [2, 5, 8]
-v3 = [3, 6, 9]
-d1 = [1, 5, 9]
-d2 = [3, 5, 7]
+h1 = [0, 1, 2]
+h2 = [3, 4, 5]
+h3 = [6, 7, 8]
+v1 = [0, 3, 6]
+v2 = [1, 4, 7]
+v3 = [2, 5, 8]
+d1 = [0, 4, 8]
+d2 = [2, 4, 6]
 
 lines = [h1, h2, h3, v1, v2, v3, d1, d2]
 
-intersecting_lines = [(h1, v1, 1), (h1, v2, 2), (h1, v3, 3),
-                      (h2, v1, 4), (h2, v2, 5), (h2, v3, 6),
-                      (h3, v1, 7), (h3, v2, 8), (h3, v3, 9),
-                      (d1, h1, 1), (d1, h2, 5), (d1, h3, 9),
-                      (d1, v1, 1), (d1, v2, 5), (d1, v3, 9),
-                      (d2, h1, 3), (d2, h2, 5), (d2, h3, 7),
-                      (d2, v1, 3), (d2, v2, 5), (d2, v3, 7),
-                      (d1, d2, 5)]
+intersecting_lines = [(h1, v1, 0), (h1, v2, 1), (h1, v3, 2),
+                      (h2, v1, 3), (h2, v2, 4), (h2, v3, 5),
+                      (h3, v1, 6), (h3, v2, 7), (h3, v3, 8),
+                      (d1, h1, 0), (d1, h2, 4), (d1, h3, 8),
+                      (d1, v1, 0), (d1, v2, 4), (d1, v3, 8),
+                      (d2, h1, 2), (d2, h2, 4), (d2, h3, 6),
+                      (d2, v1, 2), (d2, v2, 4), (d2, v3, 6),
+                      (d1, d2, 4)]
 
 def printboard(b):
     for n, x in enumerate(b):
        print(x, end='')
-       if n > 0 and n % 3 == 0: print('')
+       if n % 3 == 0: print('')
 
-def full(board):
-    return '_' not in board
+def full(b):
+    return '_' not in b
 
 def wins(p, b):
     win = [p, p, p]
@@ -114,33 +114,33 @@ def tactic_block_fork(b):
 
 #5. Play Centre
 def tactic_play_centre(b):
-    return try_to_take(b, [5])
+    return try_to_take(b, [4])
 
 #6. Play opposite corner
 def tactic_play_opposite_corner(b):
-    if takenby(1, 'X', b):
-        if try_to_take(b, [9]): return True
-    elif takenby(3, 'X', b):
-        if try_to_take(b, [7]): return True
-    elif takenby(7, 'X', b):
-        if try_to_take(b, [3]): return True
-    elif takenby(9, 'X', b):
-        return try_to_take(b, 1)
+    if takenby(0, 'X', b):
+        if try_to_take(b, [8]): return True
+    elif takenby(2, 'X', b):
+        if try_to_take(b, [6]): return True
+    elif takenby(6, 'X', b):
+        if try_to_take(b, [2]): return True
+    elif takenby(8, 'X', b):
+        return try_to_take(b, 0)
 
 #7. Play empty corner
 def tactic_empty_corner(b):
-    return try_to_take(b, [1, 3, 7, 9])
+    return try_to_take(b, [0, 2, 6, 8])
 
 #8. Play empty side
 def tactic_empty_side(b):
-    return try_to_take(b, [2, 4, 6, 8])
+    return try_to_take(b, [1, 3, 5, 7])
 
 def human_move(board):
-    n_input = input('Position 1..9? ')
+    n_input = input('Position 0..8? ')
     if n_input.isdigit():
         n = int(n_input)
-        if n < 1 or n > 9:
-            print('Board position must be from 1..9')
+        if n < 0 or n > 8:
+            print('Board position must be from 0..8')
             human_move(board)
         else:
             if taken(n, board):
@@ -248,3 +248,4 @@ print(f'O wins {owins}, X wins {xwins}, draw {draw}')
 
 #Computer vs computer for 3x3 noughts and crosses (always a draw!)
 #For this, need to allow computer to play as 'X' or 'O'
+
