@@ -222,8 +222,8 @@ def next_boards(b, pl):
             bs.append(new_board)
     return (b, [next_boards(x, swap_player(pl)) for x in bs])
 
-def game_tree(player):
-    return next_boards(emptyboard, player)
+def game_tree(pl):
+    return next_boards(emptyboard, pl)
 
 x_game_tree = game_tree('X')
 
