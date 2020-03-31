@@ -246,6 +246,4 @@ draw = sum_game_tree(f, x_game_tree)
 
 print(f'O wins {owins}, X wins {xwins}, draw {draw}')
 
-#Computer vs computer for 3x3 noughts and crosses (always a draw!)
-#For this, need to allow computer to play as 'X' or 'O'
 
