@@ -244,6 +244,9 @@ owins = sum_game_tree(f, x_game_tree)
 def f(b): return not wins('X', b) and not wins('O', b) and full(b)
 draw = sum_game_tree(f, x_game_tree)
 
-print(f'O wins {owins}, X wins {xwins}, draw {draw}')
+def f(b): return wins('X', b) or wins('O', b) or full(b)
+total = sum_game_tree(f, x_game_tree)
+
+print(f'O wins {owins}, X wins {xwins}, draw {draw}, total games {total}')
 
 

@@ -1,0 +1,17 @@
+def win_or_block(b, piece):
+    for l in lines:
+        bl = [b[x] for x in l]
+        if bl.count('_') == 1 and bl.count(piece) == 2:
+            for x in l:
+                if b[x] == '_': b[x] = 'X'
+            return True
+    return False
+
+def tactic_win(b):
+    return win_or_block(b, 'X')
+
+def tactic_block(b):
+    return win_or_block(b, 'O')
+
+def tactic_play_centre(b):
+    return try_to_take(b, [4])
