@@ -35,12 +35,6 @@ def wins(p, b):
         if bl == win: return True
     return False
 
-def taken(n, b):
-    return b[n] is not '_'
-
-def takenby(n, p, b):
-    return b[n] is not p
-
 #Tactics.
 def try_to_take(b, ps):
     for p in ps:
@@ -118,13 +112,13 @@ def tactic_play_centre(b):
 
 #6. Play opposite corner
 def tactic_play_opposite_corner(b):
-    if takenby(0, 'X', b):
+    if b[0] = 'X':
         if try_to_take(b, [8]): return True
-    elif takenby(2, 'X', b):
+    elif b[2] = 'X':
         if try_to_take(b, [6]): return True
-    elif takenby(6, 'X', b):
+    elif b[6] = 'X':
         if try_to_take(b, [2]): return True
-    elif takenby(8, 'X', b):
+    elif b[8] = 'X':
         return try_to_take(b, 0)
 
 #7. Play empty corner
@@ -143,7 +137,7 @@ def human_move(board):
             print('Board position must be from 0..8')
             human_move(board)
         else:
-            if taken(n, board):
+            if board[n] is not '_':
                 print('Position already taken')
                 human_move(board)
             else:
