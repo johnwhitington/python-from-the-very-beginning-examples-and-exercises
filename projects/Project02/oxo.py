@@ -112,13 +112,13 @@ def tactic_play_centre(b):
 
 #6. Play opposite corner
 def tactic_play_opposite_corner(b):
-    if b[0] = 'X':
+    if b[0] == 'X':
         if try_to_take(b, [8]): return True
-    elif b[2] = 'X':
+    elif b[2] == 'X':
         if try_to_take(b, [6]): return True
-    elif b[6] = 'X':
+    elif b[6] == 'X':
         if try_to_take(b, [2]): return True
-    elif b[8] = 'X':
+    elif b[8] == 'X':
         return try_to_take(b, 0)
 
 #7. Play empty corner
