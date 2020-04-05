@@ -16,7 +16,7 @@ lines = [h1, h2, h3, v1, v2, v3, d1, d2]
 def printboard(b):
     for n, x in enumerate(b):
        print(x, end='')
-       if n % 3 == 0: print('')
+       if n % 3 == 2: print('')
 
 def full(b):
     return '_' not in b
@@ -28,9 +28,9 @@ def wins(p, b):
         if bl == win: return True
     return False
 
-def play_arbitrary(pl, b):
+def random_play(pl, b):
     p = random.randint(0, 8)
-    while b[p] == '_':
+    while b[p] != '_':
         p = (p + 1) % 9
     b[p] = pl
 
@@ -39,7 +39,8 @@ def random_game():
     pl = 'O'
     while not (full(b) or wins('X', b) or wins('O', b)):
         printboard(b)
-        play_arbitrary(pl, b)
+        print('')
+        random_play(pl, b)
         if pl == 'O': pl = 'X'
         else: pl = 'O'
     printboard(b)
