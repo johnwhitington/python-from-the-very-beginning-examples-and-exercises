@@ -23,7 +23,7 @@ intersecting_lines = [(h1, v1, 0), (h1, v2, 1), (h1, v3, 2),
 def printboard(b):
     for n, x in enumerate(b):
        print(x, end='')
-       if n % 3 == 0: print('')
+       if n % 3 == 2: print('')
 
 def full(b):
     return '_' not in b
@@ -102,8 +102,9 @@ def tactic_block_fork(b):
             elif find_two_in_row(b, l2[1]): return True
             elif find_two_in_row(b, l2[2]): return True
             else:
-                b[i] = 'X'
-                return True
+                if b[i] == '_':
+                    b[i] = 'X'
+                    return True
     return False
 
 #5. Play Centre
@@ -175,7 +176,7 @@ def computer_move(b):
     print('No tactic applied: error in tactic implementations')
 
 def play(human_goes_first):
-    print('Board is numbered\n123\n456\n789\n')
+    print('Board is numbered\n012\n345\n678\n')
     board = emptyboard.copy()
     if human_goes_first:
         print('You go first...')
@@ -197,50 +198,7 @@ def play(human_goes_first):
     else:
         print('Draw!')
 
-#play(True)
+play(True)
 
-
-#The game tree for 3x3 noughts and crosses.
-def swap_player(p):
-    if p == 'X': return 'O'
-    else: return 'X'
-
-def next_boards(b, pl):
-    if wins('O', b) or wins('X', b) or full(b):
-        return (b, [])
-    bs = []
-    for i, e in enumerate(b):
-        if e == '_':
-            new_board = b.copy()
-            new_board[i] = pl
-            bs.append(new_board)
-    return (b, [next_boards(x, swap_player(pl)) for x in bs])
-
-def game_tree(pl):
-    return next_boards(emptyboard, pl)
-
-x_game_tree = game_tree('X')
-
-#Calculate number of games in which x wins, o wins, or it is a draw
-def sum_game_tree(f, t):
-    b, bs = t
-    ns = f(b)
-    for sb in bs:
-        ns = ns + sum_game_tree(f, sb)
-    return ns
-
-def f(b): return wins('X', b)
-xwins = sum_game_tree(f, x_game_tree)
-
-def f(b): return wins('O', b)
-owins = sum_game_tree(f, x_game_tree)
-
-def f(b): return not wins('X', b) and not wins('O', b) and full(b)
-draw = sum_game_tree(f, x_game_tree)
-
-def f(b): return wins('X', b) or wins('O', b) or full(b)
-total = sum_game_tree(f, x_game_tree)
-
-print(f'O wins {owins}, X wins {xwins}, draw {draw}, total games {total}')
 
 
