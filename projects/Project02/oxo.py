@@ -73,12 +73,8 @@ def tactic_fork(b):
     return False
 
 #4. Block fork
-
-#If position p is blank, check if filling it would make two in any row, column,
-#or diagonal for 'X'. If so, fill it with 'X'.
 def find_two_in_row(b, p):
     if b[p] == '_':
-      #find lines p is in. If a line has one X and no Os, fill it.
       for l in lines:
           if p in l:
               bl = [b[x] for x in l]
@@ -198,7 +194,5 @@ def play(human_goes_first):
     else:
         print('Draw!')
 
-play(True)
-
-
+play(False)
 
