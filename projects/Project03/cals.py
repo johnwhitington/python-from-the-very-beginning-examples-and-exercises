@@ -1,6 +1,18 @@
 import sys
 # List a file to screen
-def table_of_file(filename): pass
+def table_of_file(filename):
+    with open(filename) as f:
+        table = {}
+        for l in f.readlines():
+            fields = l.split()
+            if len(fields) == 0:
+              print(f'malformed table in {filename}')
+              return table
+            else:
+              key = fields[0]
+              values = fields[1:]
+              table[key] = values
+        return table
 
 # List the weights, or foods eaten for a day. List calories by calculation.
 # cals list eaten <date>
@@ -14,7 +26,11 @@ def list_dates(): pass
 
 # List the calorie data itself.
 # cals list foods
-def list_foods(): pass
+def list_foods():
+    for k, vs in table_of_file('calories.txt').items():
+        print(k, end=' ')
+        for v in vs: print(v, end=' ')
+        print('')
 
 # A generic k-v lookup procedure
 def table_lookup(k): pass
