@@ -100,30 +100,32 @@ def eaten(name, food, grams):
         print(f'{food} {grams}', file=f)
 
 # Main program. Read args and dispatch.
-if len(sys.argv) > 1:
-    cmd = sys.argv[1]
+arg = sys.argv
+
+if len(arg) > 1:
+    cmd = arg[1]
     if cmd == 'list':
-        if len(sys.argv) > 3 and sys.argv[2] == 'eaten':
-            list_eaten(sys.argv[3], sys.argv[4])
+        if len(arg) > 3 and arg[2] == 'eaten':
+            list_eaten(arg[3], arg[4])
         else:
-            if sys.argv[2] == 'weights' and len(sys.argv) > 3:
-                list_weights(sys.argv[3])
-            elif sys.argv[2] == 'dates' and len(sys.argv) > 3:
-                list_dates(sys.argv[3])
-            elif sys.argv[2] == 'foods':
+            if arg[2] == 'weights' and len(arg) > 3:
+                list_weights(arg[3])
+            elif arg[2] == 'dates' and len(arg) > 3:
+                list_dates(arg[3])
+            elif arg[2] == 'foods':
                 list_foods()
     elif cmd == 'lookup':
-        if len(sys.argv) > 2:
-            if sys.argv[2] == 'calories':
-                lookup_calories(sys.argv[3])
-            elif sys.argv[2] == 'weight' and len(sys.argv) > 3:
-                lookup_weight(sys.argv[3], sys.argv[4])
+        if len(arg) > 2:
+            if arg[2] == 'calories':
+                lookup_calories(arg[3])
+            elif arg[2] == 'weight' and len(arg) > 3:
+                lookup_weight(arg[3], arg[4])
     elif cmd == 'total':
-        if len(sys.argv) > 3:
-            total_date(sys.argv[2], sys.argv[3])
+        if len(arg) > 3:
+            total_date(arg[2], arg[3])
     elif cmd == 'newuser':
-        if len(sys.argv) > 2:
-            new_user(sys.argv[2])
+        if len(arg) > 2:
+            new_user(arg[2])
     elif cmd == 'eaten':
-        if len(sys.argv) > 4:
-            eaten(sys.argv[2], sys.argv[3], sys.argv[4])
+        if len(arg) > 4:
+            eaten(arg[2], arg[3], arg[4])
