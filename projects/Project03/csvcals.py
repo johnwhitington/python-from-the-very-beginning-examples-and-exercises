@@ -1,44 +1,38 @@
-#Mention in text that dictionaries are ordered -- update to Python 3.6
 import sys
 import os
 import datetime
+import csv
 
-# List a file to screen
-def table_of_file(filename):
-    with open(filename) as f:
-        table = {}
-        for l in f.readlines():
-            fields = l.split()
-            if len(fields) == 0:
-              print(f'malformed table in {filename}')
-              return table
-            else:
-              key = fields[0]
-              values = fields[1:]
-              table[key] = values
-        return table
+def table_of_file_csv(filename):
+    with open(filename) as c:
+        r = csv.reader(c)
+        next(r)
+        d = {}
+        for row in r:
+            d[row[0]] = row[1:]
+        return d 
 
 # List the weights, or foods eaten for a day. List calories by calculation.
 # cals list eaten <name> <date>
 # cals list weights <name>
 def list_eaten(name, date):
-    for k, vs in table_of_file(os.path.join(name, date) + '.txt').items():
+    for k, vs in table_of_file(os.path.join(name, date) + '.csv').items():
         print(f'{k} {vs[0]}')
 
 def list_weights(name):
-    for k, vs in table_of_file(os.path.join(name, 'weight.txt')).items():
+    for k, vs in table_of_file(os.path.join(name, 'weight.csv')).items():
         print(f'{k} {vs[0]}')
     
 # List the dates for which we have calorie counts
 # cals list dates
 def list_dates(name):
     for filename in sorted(os.listdir(name)):
-        if filename != 'weight.txt': print(filename[:-4])
+        if filename != 'weight.csv': print(filename[:-4])
 
 # List the calorie data itself.
 # cals list foods
 def list_foods():
-    for k, vs in table_of_file('calories.txt').items():
+    for k, vs in table_of_file('calories.csv').items():
         print(k, end=' ')
         for v in vs: print(v, end=' ')
         print('')
@@ -47,7 +41,7 @@ def list_foods():
 # cals lookup calories <food>
 # cals lookup weight <date>
 def lookup_calories(food):
-    table = table_of_file('calories.txt')
+    table = table_of_file('calories.csv')
     vs = table[food]
     if vs == None:
         print(f'Food {food} not found')
@@ -60,7 +54,7 @@ def lookup_calories(food):
             print(f'Malformed calorie entry for {food} in calories file')
 
 def lookup_weight(name, date):
-    table = table_of_file(os.path.join(name, 'weight.txt'))
+    table = table_of_file(os.path.join(name, 'weight.csv'))
     vs = table[date]
     if vs == None:
         print(f'No weight found for {date}')
@@ -70,8 +64,8 @@ def lookup_weight(name, date):
 # Print the total calories for just a given day.
 # cals total <date>
 def total_date(name, date):
-    calories = table_of_file('calories.txt')
-    table = table_of_file(os.path.join(name, date) + '.txt')
+    calories = table_of_file('calories.csv')
+    table = table_of_file(os.path.join(name, date) + '.csv')
     total = 0
     for k, vs in table.items():
         print(f'food is {k}, grams is {vs[0]}')
@@ -86,7 +80,7 @@ def total_date(name, date):
 # cals newuser <name>
 def new_user(name):
     os.mkdir(name)
-    with open(os.path.join(name, 'weight.txt'), 'w'):
+    with open(os.path.join(name, 'weight.csv'), 'w'):
         pass
 
 def date_today():
@@ -96,7 +90,7 @@ def date_today():
 # Add data for today - food and grams
 # cals eaten <name> <food> <grams>
 def eaten(name, food, grams):
-    with open(os.path.join(name, date_today()) + '.txt', 'a') as f:
+    with open(os.path.join(name, date_today()) + '.csv', 'a') as f:
         print(f'{food} {grams}', file=f)
 
 # Main program. Read args and dispatch.
