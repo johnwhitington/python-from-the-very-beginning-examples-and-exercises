@@ -99,6 +99,12 @@ def eaten(name, food, grams):
     with open(os.path.join(name, date_today()) + '.txt', 'a') as f:
         print(f'{food} {grams}', file=f)
 
+# Add weight for today
+# cals weighed <name> <weight>
+def weighed(name, weight):
+    with open(os.path.join(name, 'weight.txt'), 'a') as f:
+        print(f'{date_today()} {weight}', file=f)
+
 # Main program. Read args and dispatch.
 arg = sys.argv
 
@@ -129,3 +135,6 @@ if len(arg) > 1:
     elif cmd == 'eaten':
         if len(arg) > 4:
             eaten(arg[2], arg[3], arg[4])
+    elif cmd == 'weighed':
+        if len(arg) > 3:
+            weighed(arg[2], arg[3])

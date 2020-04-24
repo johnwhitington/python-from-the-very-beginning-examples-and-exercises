@@ -13,8 +13,8 @@ def table_of_file_csv(filename):
         return d 
 
 # List the weights, or foods eaten for a day. List calories by calculation.
-# cals list eaten <name> <date>
-# cals list weights <name>
+# calscsv list eaten <name> <date>
+# calscsv list weights <name>
 def list_eaten(name, date):
     for k, vs in table_of_file(os.path.join(name, date) + '.csv').items():
         print(f'{k} {vs[0]}')
@@ -24,13 +24,13 @@ def list_weights(name):
         print(f'{k} {vs[0]}')
     
 # List the dates for which we have calorie counts
-# cals list dates
+# calscsv list dates
 def list_dates(name):
     for filename in sorted(os.listdir(name)):
         if filename != 'weight.csv': print(filename[:-4])
 
 # List the calorie data itself.
-# cals list foods
+# calscsv list foods
 def list_foods():
     for k, vs in table_of_file('calories.csv').items():
         print(k, end=' ')
@@ -38,8 +38,8 @@ def list_foods():
         print('')
 
 # lookup a) calories for a type of food b) weight for a day. Today if missing.
-# cals lookup calories <food>
-# cals lookup weight <date>
+# calscsv lookup calories <food>
+# calscsv lookup weight <date>
 def lookup_calories(food):
     table = table_of_file('calories.csv')
     vs = table[food]
@@ -62,7 +62,7 @@ def lookup_weight(name, date):
         print(f'Weight at {date} was {vs[0]}')
 
 # Print the total calories for just a given day.
-# cals total <date>
+# csvcals total <date>
 def total_date(name, date):
     calories = table_of_file('calories.csv')
     table = table_of_file(os.path.join(name, date) + '.csv')
@@ -77,21 +77,33 @@ def total_date(name, date):
     print(f'Total calories for {date}: {int(total)}')
 
 # Create and initialise new user
-# cals newuser <name>
+# csvcals newuser <name>
 def new_user(name):
     os.mkdir(name)
-    with open(os.path.join(name, 'weight.csv'), 'w'):
-        pass
+    with open(os.path.join(name, 'weight.csv'), 'w') as f:
+        print('Date, Weight', file=f)
 
 def date_today():
    d = datetime.datetime.now()
    return (f'{d.day:02}-{d.month:02}-{d.year}')
 
 # Add data for today - food and grams
-# cals eaten <name> <food> <grams>
+# csvcals eaten <name> <food> <grams>
 def eaten(name, food, grams):
-    with open(os.path.join(name, date_today()) + '.csv', 'a') as f:
+    filename = os.path.join(name, date_today()) + '.csv'
+    is_new = not os.path.exists(filename)
+    with open(filename, 'a') as f:
+        if is_new: print('Food, Weight', file=f)
         print(f'{food} {grams}', file=f)
+
+# Add weight for today
+# csvcals weighed <name> <weight>
+def weighed(name, weight):
+    filename = os.path.join(name, 'weight.txt')
+    is_new = not os.path.exists(filename)
+    with open(filename, 'a') as f:
+        if is_new: print('Date, Weight', file=f)
+        print(f'{date_today()} {weight}', file=f)
 
 # Main program. Read args and dispatch.
 arg = sys.argv
@@ -123,3 +135,6 @@ if len(arg) > 1:
     elif cmd == 'eaten':
         if len(arg) > 4:
             eaten(arg[2], arg[3], arg[4])
+    elif cmd == 'weighed':
+        if len(arg) > 3:
+            weighed(arg[2], arg[3])
