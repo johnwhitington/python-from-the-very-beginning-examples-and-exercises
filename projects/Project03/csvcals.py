@@ -80,7 +80,7 @@ def total_date(name, date):
 def new_user(name):
     os.mkdir(name)
     with open(os.path.join(name, 'weight.csv'), 'w') as f:
-        print('Date, Weight', file=f)
+        print('Date,Weight', file=f)
 
 def date_today():
    d = datetime.datetime.now()
@@ -92,8 +92,8 @@ def eaten(name, food, grams):
     filename = os.path.join(name, date_today()) + '.csv'
     is_new = not os.path.exists(filename)
     with open(filename, 'a') as f:
-        if is_new: print('Food, Weight', file=f)
-        print(f'{food}, {grams}', file=f)
+        if is_new: print('Food,Weight', file=f)
+        print(f'"{food}",{grams}', file=f)
 
 # Add weight for today
 # csvcals weighed <name> <weight>
@@ -101,8 +101,8 @@ def weighed(name, weight):
     filename = os.path.join(name, 'weight.csv')
     is_new = not os.path.exists(filename)
     with open(filename, 'a') as f:
-        if is_new: print('Date, Weight', file=f)
-        print(f'{date_today()}, {weight}', file=f)
+        if is_new: print('Date,Weight', file=f)
+        print(f'{date_today()},{weight}', file=f)
 
 # Main program. Read args and dispatch.
 arg = sys.argv
