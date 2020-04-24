@@ -74,7 +74,6 @@ def total_date(name, date):
     table = table_of_file(os.path.join(name, date) + '.txt')
     total = 0
     for k, vs in table.items():
-        print(f'food is {k}, grams is {vs[0]}')
         weight_and_calories = calories[k]
         reference_weight = int(weight_and_calories[0])
         reference_calories = int(weight_and_calories[1])

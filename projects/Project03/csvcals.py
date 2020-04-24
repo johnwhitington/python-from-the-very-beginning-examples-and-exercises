@@ -3,7 +3,7 @@ import os
 import datetime
 import csv
 
-def table_of_file_csv(filename):
+def table_of_file(filename):
     with open(filename) as c:
         r = csv.reader(c)
         next(r)
@@ -68,7 +68,6 @@ def total_date(name, date):
     table = table_of_file(os.path.join(name, date) + '.csv')
     total = 0
     for k, vs in table.items():
-        print(f'food is {k}, grams is {vs[0]}')
         weight_and_calories = calories[k]
         reference_weight = int(weight_and_calories[0])
         reference_calories = int(weight_and_calories[1])
@@ -94,16 +93,16 @@ def eaten(name, food, grams):
     is_new = not os.path.exists(filename)
     with open(filename, 'a') as f:
         if is_new: print('Food, Weight', file=f)
-        print(f'{food} {grams}', file=f)
+        print(f'{food}, {grams}', file=f)
 
 # Add weight for today
 # csvcals weighed <name> <weight>
 def weighed(name, weight):
-    filename = os.path.join(name, 'weight.txt')
+    filename = os.path.join(name, 'weight.csv')
     is_new = not os.path.exists(filename)
     with open(filename, 'a') as f:
         if is_new: print('Date, Weight', file=f)
-        print(f'{date_today()} {weight}', file=f)
+        print(f'{date_today()}, {weight}', file=f)
 
 # Main program. Read args and dispatch.
 arg = sys.argv
