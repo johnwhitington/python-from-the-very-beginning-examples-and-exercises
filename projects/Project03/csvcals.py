@@ -137,3 +137,5 @@ if len(arg) > 1:
     elif cmd == 'weighed':
         if len(arg) > 3:
             weighed(arg[2], arg[3])
+    else:
+        print('Command not understood')
