@@ -34,8 +34,6 @@ n = Image.new('RGB', (500, 500))
 
 n.save('new.png')
 
-box = [1, 1, 1, 1, 1, 1, 1, 1, 1]
-
 def blur(i):
     p = i.load()
     i2 = i.copy()
@@ -52,6 +50,10 @@ def blur(i):
                     sumb = sumb + sourceb
             p2[x, y] = int (sumr / 9), int (sumg / 9), int (sumb / 9)
     return i2
+
+x = blur(blur(blur(i)))
+
+x.save('blurred.png')
 
 #FIXME: Decide size / color of border. Make the new image with border.
 
