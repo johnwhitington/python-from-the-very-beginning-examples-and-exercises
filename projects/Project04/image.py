@@ -34,8 +34,15 @@ n = Image.new('RGB', (500, 500))
 n.save('new.png')
 
 #3. A function to add a coloured border to an image
-
-#FIXME: implement border
+def border(i, width, colour):
+    sx, sy = i.size
+    p = i.load()
+    i2 = Image.new('RGB', (sx + width * 2, sy + width * 2), colour)
+    p2 = i2.load()
+    for x in range(sx):
+        for y in range(sy):
+            p2[x + width, y + width] = p[x, y]
+    return i2
 
 #4. Use this to make the blur correct.
 def blur(i):
@@ -55,22 +62,28 @@ def blur(i):
             p2[x, y] = int (sumr / 9), int (sumg / 9), int (sumb / 9)
     return i2
 
-x = blur(blur(blur(i)))
+bordered = border(i, 20, (255, 255, 255))
 
-x.save('blurred.png')
+#x = blur(blur(blur(bordered)))
 
-#FIXME: Blur to use border
+#x.save('blurred.png')
 
 #5. An animated GIF.
-one = blur(x)
+one = blur(bordered)
 two = blur(one)
 three = blur(two)
 
-images = [x, one, two, three]
+def make_images(i, n):
+    image = i
+    images = [i]
+    for x in range(n):
+        image = blur(image)
+        images.append(image)
+    return images
+
+images = make_images(bordered, 100)
 
 images[0].save('animation.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
-
-#FIXME: to do full fadeout.
 
 #Q: A gif reverser, speeder upper, etc, fade back and forth
 
