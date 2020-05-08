@@ -1,7 +1,6 @@
 from PIL import Image
 i = Image.open('image.png')
 
-#greyscale, brightness, contrast, flip (Qs)
 #1. Greyscale and similar effects, by processing pixels in place or from old to new
 def grey(p):
     r, g, b = p
@@ -27,17 +26,22 @@ def process_pixels_in_place(f, i):
        for y in range(sy):
            p[x, y] = f(p[x, y])
 
-
+#Qs: VFlip, HFlip, Rotate, Brightness, Contrast.
 
 #2. make an image from scratch. Use this to do blurring by copying over the original and then processing.
 n = Image.new('RGB', (500, 500))
 
 n.save('new.png')
 
+#3. A function to add a coloured border to an image
+
+#FIXME: implement border
+
+#4. Use this to make the blur correct.
 def blur(i):
     p = i.load()
     i2 = i.copy()
-    p2 = i.load()
+    p2 = i2.load()
     sx, sy = i.size
     for x in range(3, sx - 3):
         for y in range(3, sy - 3):
@@ -55,16 +59,18 @@ x = blur(blur(blur(i)))
 
 x.save('blurred.png')
 
-#FIXME: Decide size / color of border. Make the new image with border.
+#FIXME: Blur to use border
 
-#gradient, fractals, similar?
-#from our turtle graphics?
+#5. An animated GIF.
+one = blur(x)
+two = blur(one)
+three = blur(two)
 
+images = [x, one, two, three]
 
+images[0].save('animation.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
 
-#Subtitling: adding text on top with PostScript?
+#FIXME: to do full fadeout.
 
-
-
-#An animated GIF. Reverse existing ones.
+#Q: A gif reverser, speeder upper, etc, fade back and forth
 
