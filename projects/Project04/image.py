@@ -1,5 +1,5 @@
 from PIL import Image
-i = Image.open('image.png')
+i = Image.open('rabbit.png')
 
 #1. Greyscale and similar effects, by processing pixels in place or from old to new
 def grey(p):
@@ -26,10 +26,13 @@ def process_pixels_in_place(f, i):
        for y in range(sy):
            p[x, y] = f(p[x, y])
 
+gr.save('greyrabbit.png')
+
 #Qs: VFlip, HFlip, Rotate, Brightness, Contrast.
 
 #2. make an image from scratch. Use this to do blurring by copying over the original and then processing.
 n = Image.new('RGB', (500, 500))
+
 
 n.save('new.png')
 
@@ -77,7 +80,7 @@ def fadeby(factor, p):
 def make_images(i):
     image = i
     images = [i]
-    for x in range(50, -1, -1):
+    for x in range(-50, 1, 1):
         print(x)
         def fade(p): return fadeby(x, p)
         image = process_pixels(fade, image)
