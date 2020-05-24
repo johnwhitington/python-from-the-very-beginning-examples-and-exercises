@@ -71,25 +71,42 @@ x = blur(blur(blur(bordered)))
 
 x.save('blurred.png')
 
-#5. Animated fade out
-def fadeby(factor, p):
-    r, g, b = p
-    return (int (r * factor / 50), int (g * factor / 50), int (b * factor / 50))
-
-
-def make_images(i):
+#Q: Animated blur out
+def make_images_blur(i, n):
     image = i
     images = [i]
-    for x in range(-50, 1, 1):
+    for x in range(n):
+        image = blur(image)
+        images.append(image)
+    return images
+
+#images = make_images_blur(bordered, 20)
+
+#images[0].save('animation.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
+
+#5. Animated fade out
+def fadeby(f, p):
+  r, g, b = p
+  r_out = int ((f * r + (100 - f) * 255) / 100)
+  g_out = int ((f * g + (100 - f) * 255) / 100)
+  b_out = int ((f * b + (100 - f) * 255) / 100)
+  return (r_out, g_out, b_out)
+
+def make_images(i):
+    images = []
+    for x in range(100, -1, -5):
         print(x)
         def fade(p): return fadeby(x, p)
-        image = process_pixels(fade, image)
-        images.append(image)
+        faded = process_pixels(fade, i)
+        images.append(faded)
     return images
 
 images = make_images(i)
 
 images[0].save('fade.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
+
+#for n, x in enumerate(images):
+#    x.save(f'fade{n}.gif')
 
 #Q: Animated blur out
 def make_images_blur(i, n):
@@ -102,7 +119,7 @@ def make_images_blur(i, n):
 
 #images = make_images_blur(bordered, 20)
 
-images[0].save('animation.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
+#images[0].save('animation.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
 
 #more Qs: A gif reverser, speeder upper, etc, fade back and forth
 
