@@ -2,6 +2,15 @@ from PIL import Image
 i = Image.open('rabbit.png')
 
 #1. Greyscale and similar effects, by processing pixels in place or from old to new
+
+p = i.load()
+sx, sy = i.size
+for x in range(sx):
+    for y in range(sy):
+        r, g, b = p[x, y]
+        gr = int ((r + g + b) / 3)
+        p[x, y] = (gr, gr, gr)
+
 def grey(p):
     r, g, b = p
     gr = int((r + g + b) / 3)
