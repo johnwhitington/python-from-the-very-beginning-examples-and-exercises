@@ -74,9 +74,13 @@ def blur(i):
             p2[x, y] = int (sumr / 9), int (sumg / 9), int (sumb / 9)
     return i2
 
-bordered = border(i, 20, (255, 255, 255))
+bordered = border(i, 20, (120, 120, 120))
 
-x = blur(blur(blur(bordered)))
+bordered.save('rabbit_border.png')
+
+white_bordered = border(i, 20, (255, 255, 255))
+
+x = blur(blur(blur(white_bordered)))
 
 x.save('blurred.png')
 
@@ -130,5 +134,22 @@ def make_images_blur(i, n):
 
 #images[0].save('animation.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
 
-#more Qs: A gif reverser, speeder upper, etc, fade back and forth
+
+#Question 1
+#Write functions to increase or decrease the brightness and contrast of an image. Brightness may be achieved by simple addition of each component of each pixel by an appropriate factor, and contrast by multiplication.
+
+#Question 2
+#Write functions to flip an image vertically or horizontally, and to rotate an image by 180°, all in-place.
+
+#Question 3
+#Rewrite the blurring to work in-place. Is the result appreciably different? How many times do you have to blur for the image?
+
+#Question 4
+#How wide does the border have to be for any given number of blurring operations? Imple- ment a version which uses only the border required.
+
+#Question 5
+#Write a program to reverse the frames of an animated GIF. The n_frames method on an image returns the number of frames, and the seek(n) method moves to a given one.
+
+#Question 6
+#Produce a GIF of the rabbit, or your picture, being blurred repeatedly until it is no longer visible (the rounding in the integer arithmetic will ensure it disappears eventually.)
 
