@@ -64,8 +64,8 @@ def blur(i):
     i2 = i.copy()
     p2 = i2.load()
     sx, sy = i.size
-    for x in range(3, sx - 3):
-        for y in range(3, sy - 3):
+    for x in range(1, sx - 1):
+        for y in range(1, sy - 1):
             sumr, sumg, sumb = 0, 0, 0
             for dx in range(-1, 2):
                 for dy in range(-1, 2):
@@ -187,12 +187,25 @@ for x in range(3): blur_in_place(white_bordered)
 
 white_bordered.save('blurredinplace.png')
 
-
 #Question 4
 #How wide does the border have to be for any given number of blurring operations? Implement a version which uses only the border required.
+def blur_auto(i, n):
+    i = border(i, n, (255, 255, 255))
+    for x in range(n):
+        i = blur(i)
+    return i
 
-#Question 5
 #Write a program to reverse the frames of an animated GIF. The n_frames method on an image returns the number of frames, and the seek(n) method moves to a given one.
+#Fixme: output is wrong: not clear Pillow can do this...
+i = Image.open('fade.gif')
+
+images = []
+
+for f in range(i.n_frames):
+    i.seek(f)
+    images.append(i.copy())
+
+images[0].save('reversed.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
 
 #Question 6
 #Produce a GIF of the rabbit, or your picture, being blurred repeatedly until it is no longer visible (the rounding in the integer arithmetic will ensure it disappears eventually.)
