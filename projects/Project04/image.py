@@ -57,6 +57,8 @@ def border(i, width, colour):
     return i2
 
 #4. Use this to make the blur correct.
+i = Image.open('rabbit.png')
+
 def blur(i):
     p = i.load()
     i2 = i.copy()
@@ -83,6 +85,7 @@ white_bordered = border(i, 20, (255, 255, 255))
 x = blur(blur(blur(white_bordered)))
 
 x.save('blurred.png')
+
 
 #Q: Animated blur out
 def make_images_blur(i, n):
@@ -140,10 +143,6 @@ def make_images_blur(i, n):
 
 #Question 2
 #Write functions to flip an image vertically or horizontally, and to rotate an image by 180°, all in-place.
-from PIL import Image
-
-i = Image.open('rabbit.png')
-
 def hflip(i):
     p = i.load()
     sx, sy = i.size
@@ -168,13 +167,42 @@ def rotate180(i):
 
 #Question 3
 #Rewrite the blurring to work in-place. Is the result appreciably different? How many times do you have to blur for the image?
+def blur_in_place(i):
+    p = i.load()
+    sx, sy = i.size
+    for x in range(3, sx - 3):
+        for y in range(3, sy - 3):
+            sumr, sumg, sumb = 0, 0, 0
+            for dx in range(-1, 2):
+                for dy in range(-1, 2):
+                    sourcer, sourceg, sourceb = p[x + dx, y + dy]
+                    sumr = sumr + sourcer
+                    sumg = sumg + sourceg
+                    sumb = sumb + sourceb
+            p[x, y] = int (sumr / 9), int (sumg / 9), int (sumb / 9)
+
+white_bordered = border(i, 20, (255, 255, 255))
+
+for x in range(3): blur_in_place(white_bordered)
+
+white_bordered.save('blurredinplace.png')
+
 
 #Question 4
-#How wide does the border have to be for any given number of blurring operations? Imple- ment a version which uses only the border required.
+#How wide does the border have to be for any given number of blurring operations? Implement a version which uses only the border required.
 
 #Question 5
 #Write a program to reverse the frames of an animated GIF. The n_frames method on an image returns the number of frames, and the seek(n) method moves to a given one.
 
 #Question 6
 #Produce a GIF of the rabbit, or your picture, being blurred repeatedly until it is no longer visible (the rounding in the integer arithmetic will ensure it disappears eventually.)
+i = border(Image.open('rabbit.png'), 3, (255, 255, 255))
+ 
+images = [i]
 
+for x in range(100):
+    print(x)
+    i = blur(i)
+    images.append(i)
+
+images[0].save('blur.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
