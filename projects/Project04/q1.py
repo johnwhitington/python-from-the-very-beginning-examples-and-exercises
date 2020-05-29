@@ -11,16 +11,16 @@ def clamp(x):
 
 def brightness(p, x):
   r, g, b = p
-  r_out = clamp (int (r + x * 128))
-  g_out = clamp (int (g + x * 128))
-  b_out = clamp (int (b + x * 128))
+  r_out = clamp(int (r + x * 128))
+  g_out = clamp(int (g + x * 128))
+  b_out = clamp(int (b + x * 128))
   return (r_out, g_out, b_out)
 
 def contrast(p, x):
   r, g, b = p
-  r_out = clamp (int (r * x))
-  g_out = clamp (int (g * x))
-  b_out = clamp (int (b * x))
+  r_out = clamp(int (r * x))
+  g_out = clamp(int (g * x))
+  b_out = clamp(int (b * x))
   return (r_out, g_out, b_out)
 
 def process_pixels(f, i):
