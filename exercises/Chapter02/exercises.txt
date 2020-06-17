@@ -68,3 +68,16 @@ def factorial(x):
 
 factorial(-1)
 
+def volume(w, h, d):
+    return w * h * d
+
+def factors_inner(n, x):
+  if x % n == 0: print(n)
+  if n < x: factors_inner(n + 1, x)
+
+def factors(x):
+    factors_inner(1, x)
+
+
+def print_roman(n):
+
