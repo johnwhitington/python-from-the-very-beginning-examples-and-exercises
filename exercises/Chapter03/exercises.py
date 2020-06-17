@@ -53,3 +53,59 @@ def guessing_game():
             guess = int(input('Lower!\n'))
     print('Correct! You took ' + str(tries) + ' guesses.')
 
+
+# Ten second pause guesser
+
+# Sentence checker and timer
+
+# Four digit code guesser
+
+# Morse code generator
+# Very simplistic, since we don't have lists at this point in the book
+def print_morse_letter(l):
+    if l == 'A': print('. -', end='   ')
+    elif l == 'B': print('- . . .', end='   ')
+    elif l == 'C': print('- . - .', end='   ')
+    elif l == 'D': print('- . .', end='   ')
+    elif l == 'E': print('.', end='   ')
+    elif l == 'F': print('. . - .', end='   ')
+    elif l == 'G': print('- - .', end='   ')
+    elif l == 'H': print('. . . .', end='   ')
+    elif l == 'I': print('. .', end='   ')
+    elif l == 'J': print('. - - -', end='   ')
+    elif l == 'K': print('- . -', end='   ')
+    elif l == 'L': print('. - . .', end='   ')
+    elif l == 'M': print('- -', end='   ')
+    elif l == 'N': print('- .', end='   ')
+    elif l == 'O': print('- - -', end='   ')
+    elif l == 'P': print('. - - .', end='   ')
+    elif l == 'Q': print('- -. -', end='   ')
+    elif l == 'R': print('- . -', end='   ')
+    elif l == 'S': print('. . .', end='   ')
+    elif l == 'T': print('-', end='   ')
+    elif l == 'U': print('. . -', end='   ')
+    elif l == 'V': print('. . . -', end='   ')
+    elif l == 'W': print('. - -', end='   ')
+    elif l == 'X': print('- . . -', end='   ')
+    elif l == 'Y': print('- . - -', end='   ')
+    elif l == 'Z': print('- - . .', end='   ')
+    elif l == '1': print('. - - - -', end='   ')
+    elif l == '2': print('. . - - -', end='   ')
+    elif l == '3': print('. . . - -', end='   ')
+    elif l == '4': print('. . . . -', end='   ')
+    elif l == '5': print('. . . . .', end='   ')
+    elif l == '6': print('- . . . .', end='   ')
+    elif l == '7': print('- - . . .', end='   ')
+    elif l == '8': print('- - - . .', end='   ')
+    elif l == '9': print('- - - - .', end='   ')
+    elif l == '0': print('- - - - -', end='   ')
+    else: print('bad letter')
+
+def print_morse(s):
+    for l in s:
+        if l == ' ': print(' ' * 7, end='')
+        else: print_morse_letter(l)
+    print('')
+
+#n.b this prints an extra '   ' at the end of the message - to fix?
+
