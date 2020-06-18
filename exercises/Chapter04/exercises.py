@@ -93,3 +93,24 @@ def print_morse(s):
         else: print_morse_letter(l)
     print('')    
 
+#Caesar cipher
+
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVQXYZ'
+
+def rotate(n, a):
+    return a[n:] + a[:n]
+
+def encode(text, cipher):
+    out = ''
+    for x in text:
+        if x == ' ': out = out + ' '
+        else: out = out + cipher[alphabet.index(x)]
+    return out
+
+def decode(text, cipher):
+    out = ''
+    for x in text:
+        if x == ' ': out = out + ' '
+        else: out = out + alphabet[cipher.index(x)]
+    return out
+
