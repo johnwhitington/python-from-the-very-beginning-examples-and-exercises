@@ -89,7 +89,7 @@ def print_morse_letter(l):
 
 def print_morse(s):
     for l in s:
-        if l == ' ': print(' ' * 4, end='')
+        if l == ' ': print('    ', end='')
         else: print_morse_letter(l)
     print('')    
 

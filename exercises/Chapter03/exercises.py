@@ -61,7 +61,8 @@ def sentence_checker():
     if input() == text:
         print('Correct!')
     else:
-        print('Incorrect!')
+        print('Incorrect! Try again...')
+        sentence_checker()
 
 # Four digit code guesser. Reports number a) correct number in correct place
 # and correct number b) correct number in incorrect place. Returns true if solved.
@@ -138,7 +139,7 @@ def print_morse_letter(l):
 
 def print_morse(s):
     for l in s:
-        if l == ' ': print(' ' * 7, end='')
+        if l == ' ': print('    ', end='')
         else: print_morse_letter(l)
     print('')
 
