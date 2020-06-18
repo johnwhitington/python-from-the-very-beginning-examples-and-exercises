@@ -54,11 +54,46 @@ def guessing_game():
     print('Correct! You took ' + str(tries) + ' guesses.')
 
 
-# Ten second pause guesser
+# Sentence checker
+def sentence_checker():
+    text = 'Jackdaws love my sphinx of Quartz'
+    print(text)
+    if input() == text:
+        print('Correct!')
+    else:
+        print('Incorrect!')
 
-# Sentence checker and timer
+# Four digit code guesser. Reports number a) correct number in correct place
+# and correct number b) correct number in incorrect place. Returns true if solved.
+def check_code_guess(code, guess):
+    correct = 0
+    correct_place = 0
+    positions_used = []
+    for x in range(0, 4):
+        if guess[x] == code[x]:
+            correct = correct + 1
+            positions_used.append(x)
+        elif guess[x] in code and code.index(guess[x]) not in positions_used:
+            correct_place = correct_place + 1
+            positions_used.append(code.index(guess[x]))
+    print('Correct number in correct place: ' + str(correct))
+    print('Correct number in incorrect place: ' + str(correct_place))
+    return code == guess
 
-# Four digit code guesser
+def code_guesser():
+    random.seed()
+    a = str(random.randint(1, 9)) 
+    b = str(random.randint(1, 9)) 
+    c = str(random.randint(1, 9)) 
+    d = str(random.randint(1, 9)) 
+    code = a + b + c + d
+    tries = 0
+    guess = input()
+    while guess != code:
+        if check_code_guess(code, guess): pass
+        else: guess = input()
+    print('Correct. You took ' + str(tries) + ' guesses.')
+
 
 # Morse code generator
 # Very simplistic, since we don't have lists at this point in the book
