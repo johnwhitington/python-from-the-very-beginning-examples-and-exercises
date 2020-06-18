@@ -71,7 +71,7 @@ factorial(-1)
 def volume(w, h, d):
     return w * h * d
 
-def factors_inner(n, x):
+def factors_inner(x):
   if x % n == 0: print(n)
   if n < x: factors_inner(n + 1, x)
 
