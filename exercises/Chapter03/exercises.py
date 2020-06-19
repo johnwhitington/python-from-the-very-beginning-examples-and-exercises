@@ -66,17 +66,23 @@ def sentence_checker():
 
 # Four digit code guesser. Reports number a) correct number in correct place
 # and correct number b) correct number in incorrect place. Returns true if solved.
+import random
+
 def check_code_guess(code, guess):
+    code = code.copy()
+    guess = guess.copy()
     correct = 0
     correct_place = 0
-    positions_used = []
     for x in range(0, 4):
         if guess[x] == code[x]:
             correct = correct + 1
-            positions_used.append(x)
-        elif guess[x] in code and code.index(guess[x]) not in positions_used:
-            correct_place = correct_place + 1
-            positions_used.append(code.index(guess[x]))
+            code[x] = -1
+            guess[x] = -1
+    for x in range(0, 4):
+        if guess[x] > -1:
+            if guess[x] in code:
+                correct_place = correct_place + 1
+                code[code.index(guess[x])] = -1
     print('Correct number in correct place: ' + str(correct))
     print('Correct number in incorrect place: ' + str(correct_place))
     return code == guess
@@ -87,12 +93,17 @@ def code_guesser():
     b = str(random.randint(1, 9)) 
     c = str(random.randint(1, 9)) 
     d = str(random.randint(1, 9)) 
-    code = a + b + c + d
-    tries = 0
-    guess = input()
+    code = [a, b, c, d]
+    code = [1, 1, 4, 4]
+    tries = 1
+    i = input()
+    guess = [int(i[0]), int(i[1]), int(i[2]), int(i[3])]
     while guess != code:
         if check_code_guess(code, guess): pass
-        else: guess = input()
+        else:
+            tries = tries + 1
+            i = input()
+            guess = [int(i[0]), int(i[1]), int(i[2]), int(i[3])]
     print('Correct. You took ' + str(tries) + ' guesses.')
 
 
