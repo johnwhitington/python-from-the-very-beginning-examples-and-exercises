@@ -67,6 +67,17 @@ def palindromic_numbers_in(x, y):
     ps = palindromes(list(map(str, list(range(x, y)))))
     return list(map(int, ps))
 
+#With iterators
+def is_palindromic(s):
+    return s == s[::-1]
+
+def palindromes(l):
+    return filter(is_palindromic, l)
+
+def palindromic_numbers_in(x, y):
+    ps = palindromes(map(str, range(x, y)))
+    return map(int, ps)
+
 #Q8
 def clip_list(l):
     return [clip(x) for x in l]
@@ -76,5 +87,8 @@ def palindromic_numbers_in(x, y):
     strings = list(map(str, list(range(x, y))))
     return [int(x) for x in strings if is_palindromic(x)]
 
-#Worth mentioning here, that not all the list()s are required... which ones?
+#With iterators
+def palindromic_numbers_in(x, y):
+    strings = map(str, range(x, y))
+    return [int(x) for x in strings if is_palindromic(x)]
 
