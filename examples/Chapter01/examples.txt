@@ -1,18 +1,26 @@
 You can copy and paste these code samples into Python.
 
+1 + 2 * 3
 
 print('Just like this')
 
+print('Can't use single quotaion marks here!')
+
+print('Can't use single quotation marks here!")
 
 print(12)
 
-print(1 + 2 * 3)
+'Just like this'
 
+1000000000 + 2000000000 * 3000000000
+
+1_000_000_000 + 2_000_000_000 * 3_000_000_000
+
+9 - 4 + 1
 
 99 > 100
 
 4 + 3 + 2 + 1 == 10
-
 
 1 == 1 and 10 > 9
 
@@ -22,7 +30,6 @@ not 1 == 1
 
 1 == 2 or not 9 > 10
 
-
 type('Hello!')
 
 type(25)
@@ -30,4 +37,10 @@ type(25)
 type(1 + 2 * 3)
 
 type(False)
+
+print('A string without a proper end)
+
+1 < '2'
+
+2 * (3 + 4 + 5
 
