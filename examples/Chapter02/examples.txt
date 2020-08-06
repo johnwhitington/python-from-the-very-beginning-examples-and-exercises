@@ -6,10 +6,6 @@ x = 200
 x * x * x
 
 
-x = 200
-
-x * x * x
-
 x = 5 + 5
 
 x * x * x
@@ -29,6 +25,8 @@ def print_twice(x):
     print(x)
 
 print_twice('Ha')
+
+print_twice(1)
 
 
 def neg(x):
@@ -50,30 +48,24 @@ def is_vowel(s):
     return s == 'a' or s == 'e' or s == 'i' or s == 'o' or s == 'u'
 
 
-def addtoten(a, b):
+def add_to_ten(a, b):
     return a + b == 10
 
-addtoten(6, 4)
+add_to_ten(6, 4)
 
-addtoten(6, 5)
-
-
-def factorial(a):
-    if a == 1:
-        return 1
-    else:
-        return a * factorial (a - 1)
- 
-  
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
+add_to_ten(6, 5)
 
 
 def welcome(first, last):
     print('Welcome, ' + first + ' ' + last + '! Enjoy your stay.')
 
 welcome('Richard', 'Smith')
+
+
+def factorial(a):
+    if a == 1:
+        return 1
+    else:
+        return a * factorial(a - 1)
+ 
 
