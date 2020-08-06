@@ -12,6 +12,39 @@ both_non_zero(1, 2)
 both_non_zero(1, 0)
 
 
+def volume(w, h, d):
+    return w * h * d
+
+volume(10, 20, 30)
+
+def volume_ten_deep(w, h):
+    return volume(w, h, 10)
+
+volume_ten_deep(5, 6)
+
+
+def is_vowel(s):
+    return s == 'a' or s == 'e' or s == 'i' or s == 'o' or s == 'u'
+
+def is_consonant(s):
+    return not is_vowel(s)
+
+is_consonant('r')
+
+is_consonant('e')
+
+
+def factorial(x):
+    if x < 0:
+        return 0
+    elif x == 0:
+        return 1
+    else:
+        return x * factorial(x - 1)
+
+factorial(-1)
+
+
 def sum(n):
     if n == 1:
         return 1
@@ -50,34 +83,12 @@ def power(x, n):
 power(2, 5)
 
 
-def is_consonant(s):
-    return not is_vowel(s)
-
-is_consonant('r')
-
-is_consonant('e')
-
-
-def factorial(x):
-    if x < 0:
-        return 0
-    elif x == 0:
-        return 1
-    else:
-        return x * factorial(x - 1)
-
-factorial(-1)
-
-def volume(w, h, d):
-    return w * h * d
-
-def factors_inner(x):
+def factors(n, x):
   if x % n == 0: print(n)
-  if n < x: factors_inner(n + 1, x)
+  if n < x: factors(n + 1, x)
 
-def factors(x):
-    factors_inner(1, x)
+def factors_simple(x):
+    factors(1, x)
 
-
-def print_roman(n):
+factors_simple(12)
 
