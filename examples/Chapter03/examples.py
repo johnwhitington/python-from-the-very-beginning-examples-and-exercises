@@ -1,15 +1,17 @@
 for x in range(0, 5):
     print(x)
 
-
 def print_numbers(n):
     for x in range(1, n + 1):
         print(x)
 
-
 def print_numbers(n):
     for x in range(1, n + 1):
         print(x, end=' ')
+
+def print_numbers(n):
+    for x in range(1, n + 1):
+        print(x, end='\t')
 
 
 def times_table(n):
@@ -18,14 +20,12 @@ def times_table(n):
             print(x * y, end=' ')
         print('')
 
-
 #Times table of size n, with tabs
 def times_table(n):
     for y in range(1, n + 1):
         for x in range(1, n + 1):
             print(x * y, end='\t')
         print('')
-
 
 #Times table of size n, with smallest spaces
 def times_table(n):
@@ -49,9 +49,19 @@ while entered != 'please':
     entered = input()
 
 
+#Fails
 entered = ''
 
 def ask_for_password():
+  while entered != 'please':
+    print('Please enter the password')
+    entered = input()
+
+
+entered = ''
+
+def ask_for_password():
+  global entered
   while entered != 'please':
     print('Please enter the password')
     entered = input()
