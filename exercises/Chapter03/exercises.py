@@ -1,4 +1,4 @@
-def print_numbers_reversed(n):
+def print_down_from(n):
     for x in range(n, 0, -1):
       print(x)
 
@@ -18,6 +18,13 @@ def count_spaces(s):
             c = c + 1
     return c
 
+def count_spaces(s):
+    c = 0
+    for x in s:
+        if x == ' ':
+            c += 1
+    return c
+
 
 def print_spaced(s):
     l = len(s)
@@ -28,11 +35,18 @@ def print_spaced(s):
     print('')
 
 
+def sentence_checker():
+    text = 'Jackdaws love my sphinx of Quartz'
+    print(text)
+    while input() != text:
+        print('Incorrect! Try again...')
+    print('Correct!')
+
+
 def ask_for_password():
   entered = ''  
   while entered != 'please':
     entered = input('Please enter the password\n')
-
 
 def ask_for_password():
     while input('Please enter the password\n') != 'please':
@@ -44,7 +58,7 @@ import random
 def guessing_game():
     target = random.randint(1, 100)
     guess = int(input('Guess a number between 1 and 100\n'))
-    tries = 0
+    tries = 1
     while guess != target:
         tries = tries + 1
         if guess < target:
@@ -53,14 +67,6 @@ def guessing_game():
             guess = int(input('Lower!\n'))
     print('Correct! You took ' + str(tries) + ' guesses.')
 
-
-# Sentence checker
-def sentence_checker():
-    text = 'Jackdaws love my sphinx of Quartz'
-    print(text)
-    while input() != text:
-        print('Incorrect! Try again...')
-    print('Correct!')
 
 
 # Morse code generator
