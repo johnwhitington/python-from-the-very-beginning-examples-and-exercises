@@ -24,6 +24,10 @@ for x in list(range(1, 5)):
     print(x)
 
 
+for i, elt in enumerate([1, 2, 4, 8, 16]):
+    print('2 ^ ' + str(i) + ' is ' + str(elt))
+
+
 l = ['zero', 'one', 'two', 'three', 'four', 'five']
 
 l[1:4]
@@ -38,6 +42,10 @@ l = ['zero', 'one', 'two', 'three', 'four', 'five']
 l[:4]
 
 l[1:]
+
+l[4:5]
+
+l[4:4]
 
 
 l = ['zero', 'one', 'two', 'three', 'four', 'five']
