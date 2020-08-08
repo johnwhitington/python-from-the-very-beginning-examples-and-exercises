@@ -17,6 +17,14 @@ def reverse(l):
         l2.append(x)
     return l2
 
+def minmax(l):
+    minimum = l[0]
+    maximum = l[0]
+    for x in l:
+        if x < minimum: minimum = x
+        if x > maximum: maximum = x
+    print('Minimum is ' + str(minimum))
+    print('Maximum is ' + str(maximum))
 
 def evens(l):
     return l[0:len(l) + 1:2]
@@ -29,20 +37,18 @@ def reverse(l):
     return l[::-1]
 
 
-def minmax(l):
-    minimum = l[0]
-    maximum = l[0]
+def setify(l):
+    l2 = []
     for x in l:
-        if x < minimum: minimum = x
-        if x > maximum: maximum = x
-    print('minimum is ' + str(minimum) + ', maximum is ' + str(maximum) + '.')
-
+        if not x in l2: l2.append(x)
+    return l2
 
 def setify(l):
     l2 = []
     for x in l:
         if x not in l2: l2.append(x)
     return l2
+
 
 def histogram(l):
     unique = setify(l)
@@ -65,6 +71,28 @@ def remove_copy(l, x):
     l2 = copy(l)
     l2.remove(x)
     return l2
+
+
+#Caesar cipher
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVQXYZ'
+
+def rotate(n, a):
+    return a[n:] + a[:n]
+
+def encode(text, cipher):
+    out = ''
+    for x in text:
+        if x == ' ': out = out + ' '
+        else: out = out + cipher[alphabet.index(x)]
+    return out
+
+def decode(text, cipher):
+    out = ''
+    for x in text:
+        if x == ' ': out = out + ' '
+        else: out = out + alphabet[cipher.index(x)]
+    return out
+
 
 #Morse code using lists
 letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
@@ -93,26 +121,6 @@ def print_morse(s):
         else: print_morse_letter(l)
     print('')    
 
-#Caesar cipher
-
-alphabet = 'ABCDEFGHIJKLMNOPQRSTUVQXYZ'
-
-def rotate(n, a):
-    return a[n:] + a[:n]
-
-def encode(text, cipher):
-    out = ''
-    for x in text:
-        if x == ' ': out = out + ' '
-        else: out = out + cipher[alphabet.index(x)]
-    return out
-
-def decode(text, cipher):
-    out = ''
-    for x in text:
-        if x == ' ': out = out + ' '
-        else: out = out + alphabet[cipher.index(x)]
-    return out
 
 # Four digit code guesser. Reports number a) correct number in correct place
 # and correct number b) correct number in incorrect place. Returns true if solved.
@@ -154,5 +162,4 @@ def code_guesser():
             i = input()
             guess = [int(i[0]), int(i[1]), int(i[2]), int(i[3])]
     print('Correct. You took ' + str(tries) + ' guesses.')
-
 
