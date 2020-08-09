@@ -1,31 +1,14 @@
 #Q1
-def strip_leading_spaces(l):
-    while len(l) > 0 and l[0] == ' ':
-        del l[0]
-
-def remove_spaces(s):
-    l = list(s)
-    strip_leading_spaces(l)
-    l.reverse()
-    strip_leading_spaces(l)
-    l.reverse()
-    return ''.join(l)
-
-#Q2
-def remove_spaces(s):
-    return ' '.join(s.split())
-
-#Q3
 def sorted_words(s):
     l = s.split()
     l.sort()
     return l
 
-#Q4
+#Q2
 def sorted_words(s):
     return sorted(s.split())
 
-#Q5
+#Q3
 def setify(l):
     l2 = []
     for x in l:
@@ -43,6 +26,23 @@ def histogram(l):
     unique = sorted(setify(l))
     for x in unique:
         print(str(x) + ' appears ' + str(l.count(x)) + ' times.')
+
+#Q4
+def strip_leading_spaces(l):
+    while len(l) > 0 and l[0] == ' ':
+        del l[0]
+
+def remove_spaces(s):
+    l = list(s)
+    strip_leading_spaces(l)
+    l.reverse()
+    strip_leading_spaces(l)
+    l.reverse()
+    return ''.join(l)
+
+#Q5
+def remove_spaces(s):
+    return ' '.join(s.split())
 
 #Q6
 def clip(x):
@@ -76,7 +76,7 @@ def palindromes(l):
 
 def palindromic_numbers_in(x, y):
     ps = palindromes(map(str, range(x, y)))
-    return map(int, ps)
+    return list(map(int, ps))
 
 #Q8
 def clip_list(l):
@@ -84,11 +84,8 @@ def clip_list(l):
 
 #Q9
 def palindromic_numbers_in(x, y):
-    strings = list(map(str, list(range(x, y))))
-    return [int(x) for x in strings if is_palindromic(x)]
-
-#With iterators
-def palindromic_numbers_in(x, y):
     strings = map(str, range(x, y))
     return [int(x) for x in strings if is_palindromic(x)]
 
+def palindromic_numbers_in(x, y):
+    return [int(x) for x in map(str, range(x, y)) if is_palindromic(x)]
