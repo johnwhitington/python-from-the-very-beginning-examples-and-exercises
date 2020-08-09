@@ -82,7 +82,7 @@ for x in map(square, l):
     print(x)
 
 
-reversed([1, 4, 3 2])
+reversed([1, 4, 3, 2])
 
 
 [x * x for x in range(10)]
