@@ -8,23 +8,13 @@
 # >>> b
 # 1
 
-#Note that we cannot write this:
+#Note that we cannot write this, since a and will be created as new local
+#variables:
 
 def swap(a, b): a, b = b, a
 
+
 #2
-
-def sum_all(t):
-  if type(t) is int:
-    return t
-  else:
-    total = 0
-    for x in t:
-      total = total + sum_all(x)
-    return total
-
-
-#3
 def keys_and_values(d):
     ks = []
     vs = []
@@ -33,14 +23,17 @@ def keys_and_values(d):
       vs.append(v)
     return (ks, vs)
 
-#4
+
+
+#3
 def dict_of_keys_and_values(ks, vs):
     d = {}
     for x in range(0, len(ks)):
         d[ks[x]] = vs[x]
     return d
 
-#5
+
+#4
 def union(a, b):
     u = {}
     for x in b: u[x] = b[x]
@@ -48,16 +41,18 @@ def union(a, b):
     return u
 
 
-#6
+#5
 def remove_zeroes(l):
     while 0 in l:
         l.remove(0)
 
-#7
+
+#6
 def reverse_dict(d):
     return {v:k for k, v in d.items()}
 
-#8
+
+#7
 def letter_set(l):
     letters = set()
     for x in l:
@@ -69,7 +64,7 @@ letters = set('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM')
 def letters_not_used(l):
     return letters - letter_set(l)
 
-#9
+#8
 def dset_of_list(l):
     set = {}
     for x in l:
@@ -100,6 +95,18 @@ def dset_exclusive_or(a, b):
     return dset_or(dset_minus(a, b), dset_minus(b, a))
 
 
-#10
+#9
 def comp_and(a, b):
     return {x for x in a for y in b if x == y}
+
+
+#10
+def sum_all(t):
+  if type(t) is int:
+    return t
+  else:
+    total = 0
+    for x in t:
+      total = total + sum_all(x)
+    return total
+
