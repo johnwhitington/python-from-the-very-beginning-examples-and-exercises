@@ -1,8 +1,4 @@
->>> None
->>> type(None)
->>> def f(a, b): a + b
->>> f(1, 2)
->>> f(1, 2) == None
+def f(a, b): a + b
 
 def g(a):
     if a > 0:
@@ -13,12 +9,6 @@ def g(a):
 list(map(g, [-1,0,1,2,3]))
 
 d = {1 : 'one', 2 : 'two', 3 : 'three'}
-d[0]
-
-d.get(0)
-v = d.get(0)
-print(v)
-
 
 def found_values(l, d):
     output = []
@@ -31,21 +21,16 @@ def found_values(l, d):
 found_values([1, 2, 3], {1 : 'one', 2 : 'two'})
 
 d = {1 : 'one', 2 : 'two', 3 : 'three'}
-d[0]
 
 
 def f(x, y): return x + y + z
 
-f(1, 2)
-
-z = 3
-f(1, 2)
 
 def safe_lookup(d, k):
     try:
         return d[k]
     except KeyError as e:
-        print(f'Could not find value for key ' + str(k))
+        print(f'Could not find value for key {k}')
         return -1
 
 safe_lookup({1 : 'one', 2 : 'two', 3 : 'three'}, 0)
@@ -70,7 +55,7 @@ def safe_lookup(d, k):
     try:
         return d[k]
     except KeyError as e:
-        print(f'Could not find value for key ' + str(k))
+        print(f'FATAL ERROR: Bad key {k} in dict {d}')
         raise e
 
 def safe_lookup(d, k):
@@ -117,5 +102,5 @@ def guessing_game():
             guess = get_guess('Higher!\n')
         elif guess > target:
             guess = get_guess('Lower!\n')
-    print('Correct! You took ' + str(tries) + ' guesses.')
+    print(f'Correct! You took {tries} guesses.')
 
