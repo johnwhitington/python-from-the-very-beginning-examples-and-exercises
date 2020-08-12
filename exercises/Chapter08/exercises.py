@@ -19,7 +19,7 @@ def not_none(x):
     return x != None
 
 def list_sum(l):
-    return sum(list(filter(not_none, list(map(safe_int, l)))))
+    return sum(filter(not_none, map(safe_int, l)))
 
 #3
 def safe_division(x, y):
