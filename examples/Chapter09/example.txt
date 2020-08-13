@@ -24,7 +24,6 @@ f = open('gregor.txt')
 f_out = open('output.txt', 'w')
 for x in reversed(list(f)):
     print(x, end='', file=f_out)
-close(f)
 f.close()
 f_out.close()
 

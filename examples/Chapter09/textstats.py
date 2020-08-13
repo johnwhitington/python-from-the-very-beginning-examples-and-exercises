@@ -11,7 +11,7 @@ def stats_from_file(f):
         lines += 1
         characters += len(line)
         words += len(line.split())
-        sentences += len(list(filter(is_full_stop, list(line))))
+        sentences += len(list(filter(is_full_stop, line)))
     return (lines, characters, words, sentences)
 
 def stats_from_filename(filename):
