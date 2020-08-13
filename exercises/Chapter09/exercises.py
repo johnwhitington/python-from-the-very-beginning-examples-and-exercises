@@ -59,7 +59,7 @@ def stats_from_file(f):
         lines += 1
         characters += len(line)
         words += len(line.split())
-        sentences += len(list(filter(is_full_stop, list(line))))
+        sentences += len(list(filter(is_full_stop, line)))
         for x in line:
             current = 0
             if x in histogram:
@@ -93,7 +93,7 @@ def stats_from_file(f):
         lines += 1
         characters += len(line)
         words += len(line.split())
-        sentences += len(list(filter(is_full_stop, list(line))))
+        sentences += len(list(filter(is_full_stop, line)))
         for x in line:
             current = 0
             if x in histogram:
