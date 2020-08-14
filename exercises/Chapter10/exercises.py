@@ -20,8 +20,8 @@ def parts(x):
     if x < 0:
         a, b = parts(-x)
         return (-a, b)
-    else
-        return (math.floor x, x - math.floor x)
+    else:
+        return (math.floor(x), x - math.floor(x))
 
 #4
 def star(x):
