@@ -21,7 +21,7 @@ def guessing_game():
             guess = int(input('Higher!\n'))
         elif guess > target:
             guess = int(input('Lower!\n'))
-    print('Correct! You took ' + str(tries) + ' guesses.')
+    print(f'Correct! You took {tries} guesses.')
 
 #4
 import statistics
