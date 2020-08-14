@@ -12,10 +12,9 @@ def guessing_game(maxnum):
             guess = int(input('Higher!\n'))
         elif guess > target:
             guess = int(input('Lower!\n'))
-    print('Correct! You took ' + str(tries) + ' guesses.')
+    print('Correct! You took {tries} guesses.')
 
 if len(sys.argv) > 1:
     guessing_game(sys.argv[1])
 else:
-    guessing_game(100)
-
+    guessing_game('100')

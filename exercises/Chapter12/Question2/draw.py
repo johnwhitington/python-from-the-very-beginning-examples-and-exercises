@@ -10,4 +10,3 @@ def plot(f, a, b, dy):
   while pos <= b:
       star(f(pos))
       pos = pos + dy
-
