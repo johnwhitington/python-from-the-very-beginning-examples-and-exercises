@@ -3,7 +3,7 @@ You can copy and paste these code samples into Python.
 import turtle
 t = turtle.Turtle()
 
-t.foward(100)
+t.forward(100)
 
 t.forward(100)
 t.right(90)
@@ -19,7 +19,7 @@ def square(x):
         t.rt(90)
 
 for _ in range(10):
-    square(t)
+    square(100)
     t.rt(360/10)
 
 t.home()
@@ -54,7 +54,7 @@ for _ in range(20):
 def star(x, y, l, n):
     t.penup()
     t.goto(x, y)
-    t.setheading(random.randint(0, 359))
+    t.setheading(0)
     t.pendown()
     for _ in range(n):
         t.fd(l)
@@ -62,6 +62,7 @@ def star(x, y, l, n):
         t.rt(360/n)
 
 t.pensize(20)
+t.color(0, 0, 0)
 star(0, 0, 200, 7)
 t.pensize(15)
 t.color(0.25, 0.25, 0.25)
@@ -89,5 +90,4 @@ t.fd(100)
 t.end_fill()
 t.hideturtle()
 
-See start.py, savestars.py and clickstar.py for the rest.
-
+Run python3 savestars.py and python3 clickstar.py for the rest.
