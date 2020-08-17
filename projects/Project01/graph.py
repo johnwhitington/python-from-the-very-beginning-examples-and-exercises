@@ -64,4 +64,3 @@ for n, arg in enumerate(sys.argv[1:]):
     key(n, arg, colors[n % 4])
 
 turtle.mainloop()
-

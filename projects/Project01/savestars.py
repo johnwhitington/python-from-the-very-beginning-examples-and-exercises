@@ -12,7 +12,7 @@ def star(x, y, l, n):
         t.bk(l)
         t.rt(360.0 / n)
 
-def manystars():
+def many_stars():
     t.clear()
     for _ in range(20):
         star(random.randint(-300, 300),
@@ -20,20 +20,20 @@ def manystars():
              random.randint(10, 150),
              random.randint(3, 30))
 
-def exit():
+def stars_exit():
     sys.exit(0)
 
-def savestars():
+def save_stars():
     turtle.Screen().getcanvas().postscript(file='stars.ps')
-    exit()
+    stars_exit()
 
 t = turtle.Turtle()
 
 t.hideturtle()
 turtle.Screen().tracer(0, 0)
-turtle.Screen().onkey(savestars, 's')
-turtle.Screen().onkey(manystars, ' ')
-turtle.Screen().onkey(exit, 'x')
+turtle.Screen().onkey(save_stars, 's')
+turtle.Screen().onkey(many_stars, ' ')
+turtle.Screen().onkey(stars_exit, 'x')
 turtle.listen()
 
 manystars()
