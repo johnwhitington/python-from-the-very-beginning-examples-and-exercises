@@ -1,3 +1,6 @@
+import turtle
+t = turtle.Turtle()
+
 #Question 1
 def square(x):
     for _ in range(4):
@@ -61,19 +64,6 @@ def whole_gamut():
         red_gamut(-300 + 55 * r, 0, r * 0.1)
 
 #Question 6
-import random
-
-def walk():
-    px = 0
-    py = 0
-    while px > -300 and px < 300 and py > -300 and py < 300:
-        dx = random.randint(-1, 1)
-        dy = random.randint(-1, 1)
-        px = px + dx
-        py = py + dy
-        t.goto(px, py)
-
-#Question 7
 import math
 
 def filled_circle(r):
