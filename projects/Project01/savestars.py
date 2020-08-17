@@ -28,14 +28,13 @@ def savestars():
     exit()
 
 t = turtle.Turtle()
-turtle.Screen().tracer(0, 0)
-t.hideturtle()
 
+t.hideturtle()
+turtle.Screen().tracer(0, 0)
 turtle.Screen().onkey(savestars, 's')
 turtle.Screen().onkey(manystars, ' ')
 turtle.Screen().onkey(exit, 'x')
-
 turtle.listen()
+
 manystars()
 turtle.mainloop()
-

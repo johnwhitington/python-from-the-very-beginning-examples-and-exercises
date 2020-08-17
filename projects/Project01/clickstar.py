@@ -20,4 +20,3 @@ t.hideturtle()
 turtle.listen()
 turtle.Screen().onscreenclick(drawstar)
 turtle.mainloop()
-

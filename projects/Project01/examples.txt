@@ -31,6 +31,8 @@ def star(l, n):
         t.bk(l)
         t.rt(360/n)
 
+star(100, 20)
+
 def star(x, y, l, n):
     t.penup()
     t.home()
@@ -60,6 +62,11 @@ def star(x, y, l, n):
         t.fd(l)
         t.bk(l)
         t.rt(360/n)
+
+t.hideturtle()
+t.speed(0)
+star(0, 0, 200, 7)
+t.showturtle()
 
 t.pensize(20)
 t.color(0, 0, 0)
