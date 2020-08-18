@@ -34,7 +34,7 @@ def human_move(pl, board):
             print('Board position must be from 0..8')
             human_move(pl, board)
         else:
-            if board[n] is not '_':
+            if board[n] != '_':
                 print('Position already taken')
                 human_move(pl, board)
             else:
@@ -63,3 +63,4 @@ def play():
     else:
         print('Draw!')
 
+play()

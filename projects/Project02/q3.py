@@ -51,4 +51,5 @@ def random_game():
         print('X wins!')
     else:
         print('Draw!')
- 
+
+random_game()

@@ -20,10 +20,10 @@ intersecting_lines = [(h1, v1, 0), (h1, v2, 1), (h1, v3, 2),
                       (d2, v1, 2), (d2, v2, 4), (d2, v3, 6),
                       (d1, d2, 4)]
 
-def printboard(b):
+def print_board(b):
     for n, x in enumerate(b):
-       print(x, end='')
-       if n % 3 == 2: print('')
+        print(x, end='')
+        if n % 3 == 2: print('')
 
 def full(b):
     return '_' not in b
@@ -134,7 +134,7 @@ def human_move(board):
             print('Board position must be from 0..8')
             human_move(board)
         else:
-            if board[n] is not '_':
+            if board[n] != '_':
                 print('Position already taken')
                 human_move(board)
             else:
@@ -176,7 +176,7 @@ def play(human_goes_first):
     board = emptyboard.copy()
     if human_goes_first:
         print('You go first...')
-        printboard(board)
+        print_board(board)
     else:
         print('Computer goes first...')
     while not (full(board) or wins('X', board) or wins('O', board)):
@@ -185,7 +185,7 @@ def play(human_goes_first):
         else:
             computer_move(board)
         human_goes_first = not human_goes_first
-        printboard(board)
+        print_board(board)
     print('Game over. Result:')
     if wins('O', board):
         print('You win!')
