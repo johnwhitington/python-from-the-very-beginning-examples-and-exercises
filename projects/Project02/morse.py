@@ -68,4 +68,6 @@ def decode_morse_string(string):
       else: print(decode_morse(code), end='')
   print('')
 
+example = ". -       . - . .   - - -   - .   - - .       . - . .   - - -   - .   - - .       -   . .   - -   .       . -   - - .   - - -"
 
+decode_morse_string(example)
