@@ -11,12 +11,13 @@ def star(x, y, l, n):
         t.bk(l)
         t.rt(360.0 / n)
 
-def drawstar(x, y):
+def draw_star(x, y):
     star(x, y, random.randint(10, 150), random.randint(3, 30))
-
+    turtle.Screen().update()
+    
 t = turtle.Turtle()
 turtle.Screen().tracer(0, 0)
 t.hideturtle()
 turtle.listen()
-turtle.Screen().onscreenclick(drawstar)
+turtle.Screen().onscreenclick(draw_star)
 turtle.mainloop()
