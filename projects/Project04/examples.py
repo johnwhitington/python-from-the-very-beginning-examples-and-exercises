@@ -55,7 +55,7 @@ def blur(i):
                     sumr = sumr + sourcer
                     sumg = sumg + sourceg
                     sumb = sumb + sourceb
-            p2[x, y] = int (sumr / 9), int (sumg / 9), int (sumb / 9)
+            p2[x, y] = (int(sumr / 9), int(sumg / 9), int(sumb / 9))
     return i2
 
 white_bordered = border(i, 20, (255, 255, 255))
@@ -79,9 +79,9 @@ images[0].save('animation.gif', save_all=True, append_images=images[1:],
 
 def fadeby(f, p):
     r, g, b = p
-    r_out = int ((f * r + (100 - f) * 255) / 100)
-    g_out = int ((f * g + (100 - f) * 255) / 100)
-    b_out = int ((f * b + (100 - f) * 255) / 100)
+    r_out = int((f * r + (100 - f) * 255) / 100)
+    g_out = int((f * g + (100 - f) * 255) / 100)
+    b_out = int((f * b + (100 - f) * 255) / 100)
     return (r_out, g_out, b_out)
 
 def process_pixels(f, i):
