@@ -46,6 +46,6 @@ high_contrast = contrast_image(i, 1.5)
 
 bright.save('bright.png')
 dim.save('dim.png')
-low_contrast.save('lowcontrast.png')
-high_contrast.save('highcontrast.png')
+low_contrast.save('low_contrast.png')
+high_contrast.save('high_contrast.png')
 
