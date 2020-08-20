@@ -9,22 +9,12 @@ for x in range(sx):
         gr = int ((r + g + b) / 3)
         p[x, y] = (gr, gr, gr)
 
+i.save('greyrabbit.png')
+
 def grey(p):
     r, g, b = p
     gr = int((r + g + b) / 3)
     return (gr, gr, gr)
-
-def process_pixels(f, i):
-    p = i.load()
-    i2 = i.copy()
-    p2 = i2.load()
-    sx, sy = i.size
-    for x in range(sx):
-        for y in range(sy):
-            p2[x, y] = f(p[x, y])
-    return i2
-
-gr = process_pixels(grey, i)
 
 def process_pixels_in_place(f, i):
    p = i.load()
@@ -33,11 +23,7 @@ def process_pixels_in_place(f, i):
        for y in range(sy):
            p[x, y] = f(p[x, y])
 
-gr.save('greyrabbit.png')
-
-n = Image.new('RGB', (500, 500))
-
-n.save('new.png')
+process_pixels_in_place(grey, i)
 
 def border(i, width, colour):
     sx, sy = i.size
@@ -48,6 +34,10 @@ def border(i, width, colour):
         for y in range(sy):
             p2[x + width, y + width] = p[x, y]
     return i2
+
+bordered = border(i, 20, (150, 150, 150))
+
+bordered.save('rabbit_border.png')
 
 i = Image.open('rabbit.png')
 
@@ -68,10 +58,6 @@ def blur(i):
             p2[x, y] = int (sumr / 9), int (sumg / 9), int (sumb / 9)
     return i2
 
-bordered = border(i, 20, (120, 120, 120))
-
-bordered.save('rabbit_border.png')
-
 white_bordered = border(i, 20, (255, 255, 255))
 
 x = blur(blur(blur(white_bordered)))
@@ -86,9 +72,10 @@ def make_images_blur(i, n):
         images.append(image)
     return images
 
-images = make_images_blur(bordered, 20)
+images = make_images_blur(white_bordered, 20)
 
-images[0].save('animation.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
+images[0].save('animation.gif', save_all=True, append_images=images[1:],
+               duration=100, loop=0)
 
 def fadeby(f, p):
   r, g, b = p
@@ -97,10 +84,19 @@ def fadeby(f, p):
   b_out = int ((f * b + (100 - f) * 255) / 100)
   return (r_out, g_out, b_out)
 
+def process_pixels(f, i):
+    p = i.load()
+    i2 = i.copy()
+    p2 = i2.load()
+    sx, sy = i.size
+    for x in range(sx):
+        for y in range(sy):
+            p2[x, y] = f(p[x, y])
+    return i2
+
 def make_images(i):
     images = []
     for x in range(100, -1, -5):
-        print(x)
         def fade(p): return fadeby(x, p)
         faded = process_pixels(fade, i)
         images.append(faded)
