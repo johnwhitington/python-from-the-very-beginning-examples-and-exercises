@@ -28,7 +28,7 @@ def border(i, width, colour):
             p2[x + width, y + width] = p[x, y]
     return i2
 
-i = border(Image.open('rabbit.png'), 3, (255, 255, 255))
+i = Image.open('rabbit.png')
  
 images = [i]
 
