@@ -2,26 +2,24 @@ from PIL import Image
 i = Image.open('rabbit.png')
 
 #Question 1
-#Write functions to increase or decrease the brightness and contrast of an image. Brightness may be achieved by simple addition of each component of each pixel by an appropriate factor, and contrast by multiplication.
-
 def clamp(x):
     if x < 0: return 0
     elif x > 255: return 255
     else: return x
 
 def brightness(p, x):
-  r, g, b = p
-  r_out = clamp(int (r + x * 128))
-  g_out = clamp(int (g + x * 128))
-  b_out = clamp(int (b + x * 128))
-  return (r_out, g_out, b_out)
+    r, g, b = p
+    r_out = clamp(int(r + x * 128))
+    g_out = clamp(int(g + x * 128))
+    b_out = clamp(int(b + x * 128))
+    return (r_out, g_out, b_out)
 
 def contrast(p, x):
-  r, g, b = p
-  r_out = clamp(int (r * x))
-  g_out = clamp(int (g * x))
-  b_out = clamp(int (b * x))
-  return (r_out, g_out, b_out)
+    r, g, b = p
+    r_out = clamp(int(r * x))
+    g_out = clamp(int(g * x))
+    b_out = clamp(int(b * x))
+    return (r_out, g_out, b_out)
 
 def process_pixels(f, i):
     p = i.load()
