@@ -6,7 +6,7 @@ sx, sy = i.size
 for x in range(sx):
     for y in range(sy):
         r, g, b = p[x, y]
-        gr = int ((r + g + b) / 3)
+        gr = int((r + g + b) / 3)
         p[x, y] = (gr, gr, gr)
 
 i.save('greyrabbit.png')
@@ -78,11 +78,11 @@ images[0].save('animation.gif', save_all=True, append_images=images[1:],
                duration=100, loop=0)
 
 def fadeby(f, p):
-  r, g, b = p
-  r_out = int ((f * r + (100 - f) * 255) / 100)
-  g_out = int ((f * g + (100 - f) * 255) / 100)
-  b_out = int ((f * b + (100 - f) * 255) / 100)
-  return (r_out, g_out, b_out)
+    r, g, b = p
+    r_out = int ((f * r + (100 - f) * 255) / 100)
+    g_out = int ((f * g + (100 - f) * 255) / 100)
+    b_out = int ((f * b + (100 - f) * 255) / 100)
+    return (r_out, g_out, b_out)
 
 def process_pixels(f, i):
     p = i.load()
@@ -104,5 +104,6 @@ def make_images(i):
 
 images = make_images(i)
 
-images[0].save('fade.gif', save_all=True, append_images=images[1:], duration=100, loop=0)
+images[0].save('fade.gif', save_all=True, append_images=images[1:],
+               duration=100, loop=0)
 
