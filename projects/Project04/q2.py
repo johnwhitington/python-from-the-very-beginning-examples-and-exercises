@@ -2,7 +2,6 @@ from PIL import Image
 i = Image.open('rabbit.png')
 
 #Question 2
-#Write functions to flip an image vertically or horizontally, and to rotate an image by 180°, all in-place.
 def hflip(i):
     p = i.load()
     sx, sy = i.size
@@ -24,4 +23,8 @@ def vflip(i):
 def rotate180(i):
     hflip(i)
     vflip(i)
+
+rotate180(i)
+
+i.save('rotated.png')
 
