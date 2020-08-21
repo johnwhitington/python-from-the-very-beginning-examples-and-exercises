@@ -85,7 +85,7 @@ def new_user(name):
 
 def date_today():
    d = datetime.datetime.now()
-   return (f'{d.day:02}-{d.month:02}-{d.year}')
+   return f'{d.day:02}-{d.month:02}-{d.year}'
 
 # Add data for today - food and grams
 # cals eaten <name> <food> <grams>
