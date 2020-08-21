@@ -52,9 +52,9 @@ def blur(i):
             for dx in range(-1, 2):
                 for dy in range(-1, 2):
                     sourcer, sourceg, sourceb = p[x + dx, y + dy]
-                    sumr = sumr + sourcer
-                    sumg = sumg + sourceg
-                    sumb = sumb + sourceb
+                    sumr += sourcer
+                    sumg += sourceg
+                    sumb += sourceb
             p2[x, y] = (int(sumr / 9), int(sumg / 9), int(sumb / 9))
     return i2
 

@@ -47,7 +47,7 @@ def sum_game_tree(f, t):
     b, bs = t
     ns = f(b)
     for sb in bs:
-        ns = ns + sum_game_tree(f, sb)
+        ns += sum_game_tree(f, sb)
     return ns
 
 def f(b): return wins('X', b)
