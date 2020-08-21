@@ -1,4 +1,3 @@
-#Mention in text that dictionaries are ordered -- update to Python 3.6
 import sys
 import os
 import datetime
@@ -9,14 +8,18 @@ def table_of_file(filename):
         table = {}
         for l in f.readlines():
             fields = l.split()
-            if len(fields) == 0:
-              print(f'malformed table in {filename}')
-              return table
-            else:
-              key = fields[0]
-              values = fields[1:]
-              table[key] = values
+            key = fields[0]
+            values = fields[1:]
+            table[key] = values
         return table
+
+# List the calorie data itself.
+# cals list foods
+def list_foods():
+    for k, vs in table_of_file('calories.txt').items():
+        print(k, end=' ')
+        for v in vs: print(v, end=' ')
+        print('')
 
 # List the weights, or foods eaten for a day. List calories by calculation.
 # cals list eaten <name> <date>
@@ -34,14 +37,6 @@ def list_weights(name):
 def list_dates(name):
     for filename in sorted(os.listdir(name)):
         if filename != 'weight.txt': print(filename[:-4])
-
-# List the calorie data itself.
-# cals list foods
-def list_foods():
-    for k, vs in table_of_file('calories.txt').items():
-        print(k, end=' ')
-        for v in vs: print(v, end=' ')
-        print('')
 
 # lookup a) calories for a type of food b) weight for a day. Today if missing.
 # cals lookup calories <food>
