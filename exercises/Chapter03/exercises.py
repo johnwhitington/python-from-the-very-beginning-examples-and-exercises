@@ -8,7 +8,7 @@ def times_table(n):
     for y in range(1, n + 1):
         for x in range(1, n + 1):
             print(x * y, end=' ' * (column_width - len(str(x * y))))
-        print('')
+        print()
 
 
 def count_spaces(s):
@@ -68,9 +68,6 @@ def guessing_game():
     print('Correct! You took ' + str(tries) + ' guesses.')
 
 
-
-# Morse code generator
-# Very simplistic, since we don't have lists at this point in the book
 def print_morse_letter(l):
     if l == 'A': print('. -', end='   ')
     elif l == 'B': print('- . . .', end='   ')
@@ -115,6 +112,4 @@ def print_morse(s):
         if l == ' ': print('    ', end='')
         else: print_morse_letter(l)
     print('')
-
-#n.b this prints an extra '   ' at the end of the message - to fix?
 

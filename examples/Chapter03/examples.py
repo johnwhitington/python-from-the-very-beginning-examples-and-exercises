@@ -1,17 +1,13 @@
 for x in range(0, 5):
     print(x)
 
-def print_numbers(n):
+def print_upto(n):
     for x in range(1, n + 1):
         print(x)
 
-def print_numbers(n):
+def print_upto(n):
     for x in range(1, n + 1):
         print(x, end=' ')
-
-def print_numbers(n):
-    for x in range(1, n + 1):
-        print(x, end='\t')
 
 
 def times_table(n):
@@ -39,7 +35,6 @@ def times_table(n):
 def print_spaced(s):
     for x in s:
         print(x, end=' ')
-    print('')
 
 
 entered = ''
@@ -58,6 +53,13 @@ def ask_for_password():
     entered = input()
 
 
+def ask_for_password():
+  entered = ''  
+  while entered != 'please':
+    print('Please enter the password')
+    entered = input()
+
+
 entered = ''
 
 def ask_for_password():
@@ -67,10 +69,5 @@ def ask_for_password():
     entered = input()
 
 
-def ask_for_password():
-  entered = ''  
-  while entered != 'please':
-    print('Please enter the password')
-    entered = input()
 
 
