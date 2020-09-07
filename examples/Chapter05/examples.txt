@@ -30,6 +30,8 @@ s.find('not there')
 
 
 s = 'Once upon a time'
+s[0]
+
 s[:4]
 
 s[:-4]

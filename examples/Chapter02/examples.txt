@@ -48,6 +48,12 @@ def is_vowel(s):
     return s == 'a' or s == 'e' or s == 'i' or s == 'o' or s == 'u'
 
 
+def sign(x):
+    if x < 0: return -1
+    elif x == 0: return 0
+    else: return 1
+
+
 def add_to_ten(a, b):
     return a + b == 10
 

@@ -45,19 +45,19 @@ def factorial(x):
 factorial(-1)
 
 
-def sum(n):
+def sum_nums(n):
     if n == 1:
         return 1
     else:
-        return n + sum(n - 1)
+        return n + sum_nums(n - 1)
 
-sum(10)
+sum_nums(10)
 
 
-def sum(n):
+def sum_nums(n):
     return (n * (n + 1)) // 2
 
-sum(10)
+sum_nums(10)
 
 
 def power(x, n):
