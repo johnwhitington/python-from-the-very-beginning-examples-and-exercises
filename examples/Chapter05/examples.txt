@@ -10,6 +10,8 @@ def join(l):
         s = s + x
     return s
 
+join(l)
+
 
 ''.join(l)
 
@@ -30,6 +32,7 @@ s.find('not there')
 
 
 s = 'Once upon a time'
+
 s[0]
 
 s[:4]
@@ -86,6 +89,8 @@ for x in map(square, l):
 
 reversed([1, 4, 3, 2])
 
+list(reversed([1, 4, 3, 2])
+
 
 [x * x for x in range(10)]
 
@@ -95,4 +100,3 @@ reversed([1, 4, 3, 2])
 
 
 [x * x * x for x in range(20) if (x * x * x) % 2 == 0]
-
