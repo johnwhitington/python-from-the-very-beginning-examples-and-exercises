@@ -13,9 +13,10 @@ def reverse(l):
 
 def reverse(l):
     l2 = []
-    for x in range(len(l), 0, -1):
-        l2.append(x)
+    for x in range(len(l) - 1, -1, -1):
+        l2.append(l[x])
     return l2
+
 
 def minmax(l):
     minimum = l[0]
@@ -25,6 +26,7 @@ def minmax(l):
         if x > maximum: maximum = x
     print('Minimum is ' + str(minimum))
     print('Maximum is ' + str(maximum))
+
 
 def evens(l):
     return l[0:len(l) + 1:2]
@@ -40,12 +42,6 @@ def reverse(l):
 def setify(l):
     l2 = []
     for x in l:
-        if not x in l2: l2.append(x)
-    return l2
-
-def setify(l):
-    l2 = []
-    for x in l:
         if x not in l2: l2.append(x)
     return l2
 
@@ -55,17 +51,19 @@ def histogram(l):
     for x in unique:
         print(str(x) + ' appears ' + str(l.count(x)) + ' times.')
 
+
 def contains_all(s, a, b, c):
     return a in s and b in s and c in s
 
 
-def copy(l):
+def copylist(l):
     l2 = []
     for x in l: l2.append(x)
     return l2
 
-def copy(l):
+def copylist(l):
     return l[:]
+
 
 def remove_copy(l, x):
     l2 = copy(l)

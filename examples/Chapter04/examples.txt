@@ -2,6 +2,9 @@ These examples can be cut-and-pasted into Python
 
 l = ['zero', 'one', 'two', 'three', 'four', 'five']
 
+len([2, 3, 5, 7, 11, 13])
+
+
 l[0]
 
 l[5]
@@ -46,6 +49,8 @@ l[1:]
 l[4:5]
 
 l[4:4]
+
+l[-3:-1]
 
 
 l = ['zero', 'one', 'two', 'three', 'four', 'five']
@@ -101,11 +106,24 @@ l.insert(2, 'two')
 l
 
 
+l = ['zero', 'one', 'three', 'four', 'five']
+
+l2 = l
+
+l3 = l.copy()
+
+l
+
+l2
+
+l3
+
+
 l = ['zero', 'one', 'two', 'three', 'four', 'five']
 
 'two' in l
 
-'six' in l
+'six' not in l
 
 
 l = ['zero', 'one', 'two', 'three', 'four', 'five']
