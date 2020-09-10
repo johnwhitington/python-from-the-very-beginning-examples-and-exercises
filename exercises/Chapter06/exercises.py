@@ -4,7 +4,7 @@ def print_list(l):
     print('[', end='')
     for x in l:
         print(x, end='')
-        length = length - 1
+        length -= 1
         if length > 0: print(', ', end='')
     print(']')
 
@@ -13,7 +13,7 @@ def print_list(l):
     length = len(l)
     print('[', end='')
     for x in l:
-        length = length - 1
+        length -= 1
         if length > 0:
             print(f'{x}, ', end='')
         else:
@@ -21,8 +21,8 @@ def print_list(l):
     print(']')
 
 #3
-def print_powers():
-    for x in range(1, 10):
+def print_powers(n):
+    for x in range(1, n):
         x1 = str(x).rjust(5)
         x2 = str(x ** 2).rjust(5)
         x3 = str(x ** 3).rjust(5)
@@ -31,8 +31,8 @@ def print_powers():
         print(x1, x2, x3, x4, x5)
 
 #4
-def print_powers():
-    for x in range(1, 10):
+def print_powers(n):
+    for x in range(1, n):
         x1 = str(x).zfill(5)
         x2 = str(x ** 2).zfill(5)
         x3 = str(x ** 3).zfill(5)
@@ -41,8 +41,8 @@ def print_powers():
         print(x1, x2, x3, x4, x5)
 
 #5
-def names_to_file():
-    with open('names.txt', 'w') as f:
+def names_to_file(filename):
+    with open(filename, 'w') as f:
         name = 'not empty'
         while name != '':
             name = input('Title, forename and surname, please: ')
@@ -51,20 +51,24 @@ def names_to_file():
                 print(words[2], words[1], words[0], sep=', ', file=f)
 
 #6
-def names_to_file():
-    with open('names.txt', 'w') as f:
+def names_to_file(filename):
+    with open(filename, 'w') as f:
         name = 'not empty'
         while name != '':
             name = input('Title, forename and surname, please: ')
             if name != '':
                 words = name.split()
-                print(f'{words[2]}, {words[1]}, {words[0]}', sep=', ', file=f)
+                print(f'{words[2]}, {words[1]}, {words[0]}', file=f)
 
 #7
+data = ['Three pounds of self-raising flour',
+        'Two pounds of plain flour',
+        'Six ounces of butter']
+
 def number_found(sentences, word):
     n = 0
     for s in sentences:
-        n = n + 1
+        n += 1
         p = s.find(word)
         if p == -1:
             print(f'{word} not found in sentence {n}')
@@ -77,11 +81,10 @@ def number_found(sentences, word, filename):
     n = 0
     with open(filename, 'w') as f:
         for s in sentences:
-            n = n + 1
+            n += 1
             p = s.find(word)
             if p == -1:
                 print(f'{word} not found in sentence {n}', file=f)
             else:
                 print(f'{word} found at position {p} in sentence {n}', file=f)
-
 
