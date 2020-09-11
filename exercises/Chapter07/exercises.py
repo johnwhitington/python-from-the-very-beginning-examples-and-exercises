@@ -19,10 +19,9 @@ def keys_and_values(d):
     ks = []
     vs = []
     for k, v in d.items():
-      ks.append(k)
-      vs.append(v)
+        ks.append(k)
+        vs.append(v)
     return (ks, vs)
-
 
 
 #3
@@ -59,10 +58,11 @@ def letter_set(l):
         letters = letters | set(x)
     return letters
 
-letters = set('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM')
+
+alphabet = set('qwertyuiopasdfghjklzxcvbnm')
 
 def letters_not_used(l):
-    return letters - letter_set(l)
+    return alphabet - letter_set(l)
 
 #8
 def dset_of_list(l):
@@ -87,8 +87,8 @@ def dset_and(a, b):
 def dset_minus(a, b):
     result = {}
     for x in a:
-      if x not in b:
-          result[x] = 0
+        if x not in b:
+            result[x] = 0
     return result
 
 def dset_exclusive_or(a, b):
@@ -103,10 +103,9 @@ def comp_and(a, b):
 #10
 def sum_all(t):
   if type(t) is int:
-    return t
+      return t
   else:
-    total = 0
-    for x in t:
-      total = total + sum_all(x)
-    return total
-
+      total = 0
+      for x in t:
+          total = total + sum_all(x)
+      return total
