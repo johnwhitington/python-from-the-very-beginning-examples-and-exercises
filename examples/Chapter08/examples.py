@@ -4,11 +4,11 @@ def g(a):
     if a > 0:
         return a
     else:
-        0
+        pass
 
-list(map(g, [-1,0,1,2,3]))
+list(map(g, [-1, 0, 1, 2, 3]))
 
-d = {1 : 'one', 2 : 'two', 3 : 'three'}
+d = {1: 'one', 2: 'two', 3: 'three'}
 
 def found_values(l, d):
     output = []
@@ -61,7 +61,7 @@ def safe_lookup(d, k):
 def safe_lookup(d, k):
     try:
         return d[k]
-    except Exception:
+    except Exception as e:
         print('Unknown error in safe_lookup')
         raise e
 
@@ -75,8 +75,6 @@ def safe_lookup(d, k):
     else:
         print('key lookup succeeded')
         return result
-
-#Two things to fix: wrong input, and int() might raise ValueError
 
 import random
 
@@ -97,10 +95,9 @@ def guessing_game():
     guess = get_guess('Guess a number between 1 and 100\n')
     tries = 1
     while guess != target:
-        tries = tries + 1
+        tries += 1
         if guess < target:
             guess = get_guess('Higher!\n')
         elif guess > target:
             guess = get_guess('Lower!\n')
     print(f'Correct! You took {tries} guesses.')
-

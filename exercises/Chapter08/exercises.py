@@ -52,10 +52,8 @@ def safe_union(a, b):
     return c
 
 #6
-def safe_add(s, k):
+def add_exception(s, k):
     if k in s:
         raise KeyError
     else:
        s.add(k)
-
-
