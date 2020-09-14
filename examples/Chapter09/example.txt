@@ -1,39 +1,47 @@
 f = open('gregor.txt', 'r')
-f.read()
+
 f.read()
 
-f = open('gregor.txt')
-f.readline()
-f.readline()
-f.readline()
-f.readline()
-f.readline()
-f.readline()
-f.readline()
-f.readline()
-f.readline()
 
 f = open('gregor.txt')
+
+f.readline()
+
+
+f = open('gregor.txt')
+
 for line in f:
     print(line, end='')
 
-f = open('gregor.txt')
-list(f)
 
 f = open('gregor.txt')
+
+list(f)
+
+
+f = open('gregor.txt')
+
 f_out = open('output.txt', 'w')
+
 for x in reversed(list(f)):
     print(x, end='', file=f_out)
+
 f.close()
+
 f_out.close()
+
 
 with open('gregor.txt') as f, open('output.txt', 'w') as f_out:
     for x in reversed(list(f)):
         print(x, end='', file=f_out)
 
+
 f = open('gregor.txt')
+
 f.close()
+
 f.read()
+
 
 open('not_there.txt')
 

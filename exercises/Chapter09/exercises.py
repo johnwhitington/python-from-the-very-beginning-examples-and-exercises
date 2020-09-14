@@ -25,8 +25,7 @@ def dict_from_file(filename):
                    return d
             except ValueError:
                 print(f'{k} is not an integer')
-                return None
-        
+
 
 #4
 def append_files(a, b, c):
@@ -123,7 +122,7 @@ def search_word(filename, word):
     lines = []
     with open(filename) as f:
         lines = f.readlines()
-    words = list(map(cleansplit, lines))
+    words = map(cleansplit, lines)
     for n, ws in enumerate(words):
         if word in ws:
             print(f'{n}: ', end='')
@@ -138,4 +137,3 @@ def top(filename):
         for l in lines[:5]: print(l, end='')
         lines = lines[5:]
         enter = input()
-
