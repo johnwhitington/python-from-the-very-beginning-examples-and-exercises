@@ -4,11 +4,10 @@ import string
 def string_is_integer(s):
     is_integer = True
     for x in s:
-      if x not in string.digits: is_integer = False
+        if x not in string.digits: is_integer = False
     return is_integer
 
 #3
-import random
 import getpass
 
 def guessing_game():
@@ -16,7 +15,7 @@ def guessing_game():
     guess = int(input('Guess a number between 1 and 100\n'))
     tries = 1
     while guess != target:
-        tries = tries + 1
+        tries += 1
         if guess < target:
             guess = int(input('Higher!\n'))
         elif guess > target:
