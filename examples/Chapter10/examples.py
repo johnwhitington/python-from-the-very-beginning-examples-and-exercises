@@ -22,4 +22,3 @@ def scale_to_length(l, v):
         factor = l / currentlength
         x, y = v
         return (x * factor, y * factor)
-
