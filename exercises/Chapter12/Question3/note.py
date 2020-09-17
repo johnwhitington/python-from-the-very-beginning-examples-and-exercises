@@ -1,25 +1,25 @@
 import sys
 
 #List notes from a filename, numbered 1..
-def list_notes(f):
-    with open(f, 'r') as fin:
-        lines = fin.readlines()
+def list_notes(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
         for n, l in enumerate(lines):
             print(f'{n + 1}: {l}', end='')
 
 #Append note to the given filename
-def add_note(f, text):
-    with open(f, 'a') as fout:
-        print(text, file=fout)
+def add_note(filename, text):
+    with open(filename, 'a') as f:
+        print(text, file=f)
 
 #Remove note from a filename, given its number.
-def remove_note(f, n):
-    with open(f, 'r') as fin:
-        lines = fin.readlines()
-    with open(f, 'w') as fout:
+def remove_note(filename, n):
+    with open(filename, 'r') as f_in:
+        lines = f_in.readlines()
+    with open(filename, 'w') as f_out:
         del lines[n - 1]
         for line in lines:
-            fout.write(line)
+            f_out.write(line)
 
 #Main
 if len(sys.argv) > 1:

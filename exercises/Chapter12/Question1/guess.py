@@ -7,7 +7,7 @@ def guessing_game(maxnum):
     guess = int(input(f'Guess a number between 1 and {maxnum}\n'))
     tries = 1
     while guess != target:
-        tries = tries + 1
+        tries += 1
         if guess < target:
             guess = int(input('Higher!\n'))
         elif guess > target:

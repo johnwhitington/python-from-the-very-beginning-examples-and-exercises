@@ -17,4 +17,3 @@ def stats_from_file(f):
 def stats_from_filename(filename):
     with open(filename) as f:
         return stats_from_file(f)
-
