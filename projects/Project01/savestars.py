@@ -36,5 +36,5 @@ turtle.Screen().onkey(many_stars, ' ')
 turtle.Screen().onkey(stars_exit, 'x')
 turtle.listen()
 
-manystars()
+many_stars()
 turtle.mainloop()

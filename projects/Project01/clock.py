@@ -45,4 +45,3 @@ while True:
     clockface(tm.tm_hour, tm.tm_min, tm.tm_sec)
     turtle.Screen().update()
     time.sleep(1)
-

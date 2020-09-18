@@ -5,7 +5,6 @@ t = turtle.Turtle()
 
 t.forward(100)
 
-t.forward(100)
 t.right(90)
 t.forward(100)
 t.right(90)
@@ -97,4 +96,4 @@ t.fd(100)
 t.end_fill()
 t.hideturtle()
 
-Run python3 savestars.py and python3 clickstar.py for the rest.
+Run python savestars.py and python clickstar.py for the rest.
