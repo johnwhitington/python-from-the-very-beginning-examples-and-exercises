@@ -7,10 +7,10 @@ def table_of_file(filename):
     with open(filename) as c:
         r = csv.reader(c)
         next(r)
-        d = {}
+        table = {}
         for row in r:
-            d[row[0]] = row[1:]
-        return d 
+            table[row[0]] = row[1:]
+        return table
 
 # List the weights, or foods eaten for a day. List calories by calculation.
 # calscsv list eaten <name> <date>
