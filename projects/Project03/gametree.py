@@ -51,17 +51,15 @@ def sum_game_tree(f, t):
     return ns
 
 def f(b): return wins('X', b)
-xwins = sum_game_tree(f, x_game_tree)
+x_wins = sum_game_tree(f, x_game_tree)
 
 def f(b): return wins('O', b)
-owins = sum_game_tree(f, x_game_tree)
+o_wins = sum_game_tree(f, x_game_tree)
 
 def f(b): return not wins('X', b) and not wins('O', b) and full(b)
 draw = sum_game_tree(f, x_game_tree)
 
 def f(b): return wins('X', b) or wins('O', b) or full(b)
-total = sum_game_tree(f, x_game_tree)
+games = sum_game_tree(f, x_game_tree)
 
-print(f'O wins {owins}, X wins {xwins}, draw {draw}, total games {total}')
-
-
+print(f'O wins {o_wins}, X wins {x_wins}, draw {draw}, total games {games}')
