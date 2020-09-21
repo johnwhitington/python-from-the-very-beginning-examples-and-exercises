@@ -195,4 +195,3 @@ def play(human_goes_first):
         print('Draw!')
 
 play(False)
-
