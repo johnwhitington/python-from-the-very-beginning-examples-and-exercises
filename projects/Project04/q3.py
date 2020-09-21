@@ -1,6 +1,7 @@
 from PIL import Image
 i = Image.open('rabbit.png')
 
+#Question 3
 def border(i, width, colour):
     sx, sy = i.size
     p = i.load()
@@ -30,4 +31,3 @@ white_bordered = border(i, 20, (255, 255, 255))
 for x in range(3): blur_in_place(white_bordered)
 
 white_bordered.save('blurredinplace.png')
-

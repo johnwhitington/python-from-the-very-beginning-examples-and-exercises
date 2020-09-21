@@ -27,4 +27,3 @@ def rotate180(i):
 rotate180(i)
 
 i.save('rotated.png')
-

@@ -48,4 +48,3 @@ bright.save('bright.png')
 dim.save('dim.png')
 low_contrast.save('low_contrast.png')
 high_contrast.save('high_contrast.png')
-

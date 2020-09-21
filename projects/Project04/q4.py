@@ -1,6 +1,7 @@
 from PIL import Image
 i = Image.open('rabbit.png')
 
+#Question 4
 def border(i, width, colour):
     sx, sy = i.size
     p = i.load()
@@ -37,4 +38,3 @@ def blur_auto(i, n):
 blurred = blur_auto(i, 10)
 
 blurred.save('autoblurred.png')
-

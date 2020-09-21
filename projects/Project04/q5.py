@@ -1,6 +1,7 @@
 from PIL import Image
 i = Image.open('rabbit.png')
 
+#Question 5
 def blur(i):
     p = i.load()
     i2 = i.copy()
