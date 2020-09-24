@@ -1,12 +1,12 @@
 You can copy and paste these code samples into Python.
 
-1 + 2 * 3
-
 print('Just like this')
+
+1 + 2 * 3
 
 print('Can't use single quotaion marks here!')
 
-print('Can't use single quotation marks here!")
+print("Can't use single quotation marks here!")
 
 print(12)
 
