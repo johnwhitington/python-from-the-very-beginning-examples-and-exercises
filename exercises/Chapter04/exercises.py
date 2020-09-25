@@ -56,12 +56,12 @@ def contains_all(s, a, b, c):
     return a in s and b in s and c in s
 
 
-def copylist(l):
+def copy_list(l):
     l2 = []
     for x in l: l2.append(x)
     return l2
 
-def copylist(l):
+def copy_list(l):
     return l[:]
 
 
