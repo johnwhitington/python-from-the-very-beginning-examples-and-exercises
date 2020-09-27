@@ -15,7 +15,7 @@ def swap(a, b): a, b = b, a
 
 
 #2
-def keys_and_values(d):
+def unzip(d):
     ks = []
     vs = []
     for k, v in d.items():

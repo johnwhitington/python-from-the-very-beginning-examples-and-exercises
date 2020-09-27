@@ -132,7 +132,7 @@ s = set('qwertyuiop')
 
 'e' in s
 
-'z' in s
+'z' not in s
 
 
 s = set([1, 2, 3, 4, 4, 5])
