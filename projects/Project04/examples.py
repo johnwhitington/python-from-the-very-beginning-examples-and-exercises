@@ -77,7 +77,7 @@ images = make_images_blur(white_bordered, 20)
 images[0].save('animation.gif', save_all=True, append_images=images[1:],
                duration=100, loop=0)
 
-def fadeby(f, p):
+def fade_by(f, p):
     r, g, b = p
     r_out = int((f * r + (100 - f) * 255) / 100)
     g_out = int((f * g + (100 - f) * 255) / 100)
@@ -97,7 +97,7 @@ def process_pixels(f, i):
 def make_images(i):
     images = []
     for x in range(100, -1, -5):
-        def fade(p): return fadeby(x, p)
+        def fade(p): return fade_by(x, p)
         faded = process_pixels(fade, i)
         images.append(faded)
     return images
