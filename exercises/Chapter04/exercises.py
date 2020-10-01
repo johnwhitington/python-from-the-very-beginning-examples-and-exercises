@@ -154,7 +154,8 @@ def code_guesser():
     i = input()
     guess = [int(i[0]), int(i[1]), int(i[2]), int(i[3])]
     while guess != code:
-        if check_code_guess(code, guess): pass
+        if check_code_guess(code, guess):
+            pass
         else:
             tries = tries + 1
             i = input()
