@@ -112,4 +112,3 @@ def print_morse(s):
         if l == ' ': print('    ', end='')
         else: print_morse_letter(l)
     print('')
-

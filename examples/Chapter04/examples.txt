@@ -28,7 +28,7 @@ for x in list(range(1, 5)):
 
 
 for i, elt in enumerate([1, 2, 4, 8, 16]):
-    print('2 ^ ' + str(i) + ' is ' + str(elt))
+    print('2 to the power ' + str(i) + ' is ' + str(elt))
 
 
 l = ['zero', 'one', 'two', 'three', 'four', 'five']
