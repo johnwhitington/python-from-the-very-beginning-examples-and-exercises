@@ -1,4 +1,4 @@
-#Text statistics: lines, characters, word, sentences.
+#Text statistics: lines, characters, words, and sentences.
 def is_full_stop(s):
     return s == '.'
 
