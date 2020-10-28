@@ -10,7 +10,7 @@ def table_of_file(filename):
         d = {}
         for row in r:
             d[row[0]] = row[1:]
-        return d 
+        return d
 
 # List the weights, or foods eaten for a day. List calories by calculation.
 # calscsv list eaten <name> <date>
@@ -22,7 +22,7 @@ def list_eaten(name, date):
 def list_weights(name):
     for k, vs in table_of_file(os.path.join(name, 'weight.csv')).items():
         print(f'{k} {vs[0]}')
-    
+
 # List the dates for which we have calorie counts
 # calscsv list dates
 def list_dates(name):
@@ -83,8 +83,8 @@ def new_user(name):
         print('Date,Weight', file=f)
 
 def date_today():
-   d = datetime.datetime.now()
-   return (f'{d.day:02}-{d.month:02}-{d.year}')
+    d = datetime.datetime.now()
+    return f'{d.day:02}-{d.month:02}-{d.year}'
 
 # Add data for today - food and grams
 # csvcals eaten <name> <food> <grams>
@@ -102,7 +102,7 @@ def weighed(name, weight):
     filename = os.path.join(name, 'weight.csv')
     is_new = not os.path.exists(filename)
     with open(filename, 'a') as f:
-        w = csv.writer(f)        
+        w = csv.writer(f)
         if is_new: w.writerow(['Date', 'Weight'])
         w.writerow([date_today(), weight])
 

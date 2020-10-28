@@ -14,7 +14,7 @@ def star(x, y, l, n):
 def draw_star(x, y):
     star(x, y, random.randint(10, 150), random.randint(3, 30))
     turtle.Screen().update()
-    
+
 t = turtle.Turtle()
 turtle.Screen().tracer(0, 0)
 t.hideturtle()

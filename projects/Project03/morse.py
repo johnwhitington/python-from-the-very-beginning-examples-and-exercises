@@ -63,10 +63,10 @@ def split_string(string):
     return codes
 
 def decode_morse_string(string):
-  for code in split_string(string):
-      if code == ' ': print(' ', end='')
-      else: print(decode_morse(code), end='')
-  print('')
+    for code in split_string(string):
+        if code == ' ': print(' ', end='')
+        else: print(decode_morse(code), end='')
+    print('')
 
 example = ". -       . - . .   - - -   - .   - - .       . - . .   - - -   - .   - - .       -   . .   - -   .       . -   - - .   - - -"
 

@@ -4,8 +4,8 @@ t = turtle.Turtle()
 #Question 1
 def square(x):
     for _ in range(4):
-       t.fd(x)
-       t.rt(90)
+        t.fd(x)
+        t.rt(90)
 
 def many_squares(n, l):
     for _ in range(n):
@@ -31,7 +31,7 @@ def circle(r):
     poly(int(circumference), 1.0)
 
 #Question 4
-#Grid of circles starting with top-left at (sx, sy), size 50, nx wide, ny tall. 
+#Grid of circles starting with top-left at (sx, sy), size 50, nx wide, ny tall.
 def grid(sx, sy, nx, ny):
     for x in range(nx):
         for y in range(ny):
@@ -72,4 +72,3 @@ def filled_circle(r):
     t.begin_fill()
     poly(int(circumference), 1.0)
     t.end_fill()
-

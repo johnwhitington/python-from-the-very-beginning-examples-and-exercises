@@ -15,8 +15,8 @@ lines = [h1, h2, h3, v1, v2, v3, d1, d2]
 
 def printboard(b):
     for n, x in enumerate(b):
-       print(x, end='')
-       if n % 3 == 2: print('')
+        print(x, end='')
+        if n % 3 == 2: print('')
 
 def full(b):
     return '_' not in b

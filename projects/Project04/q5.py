@@ -30,7 +30,7 @@ def border(i, width, colour):
     return i2
 
 i = Image.open('rabbit.png')
- 
+
 images = [i]
 
 for x in range(99):

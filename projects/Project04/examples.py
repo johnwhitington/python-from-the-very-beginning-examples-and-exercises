@@ -17,11 +17,11 @@ def grey(p):
     return (gr, gr, gr)
 
 def process_pixels_in_place(f, i):
-   p = i.load()
-   sx, sy = i.size
-   for x in range(sx):
-       for y in range(sy):
-           p[x, y] = f(p[x, y])
+    p = i.load()
+    sx, sy = i.size
+    for x in range(sx):
+        for y in range(sy):
+            p[x, y] = f(p[x, y])
 
 process_pixels_in_place(grey, i)
 
@@ -106,4 +106,3 @@ images = make_images(i)
 
 images[0].save('fade.gif', save_all=True, append_images=images[1:],
                duration=100, loop=0)
-

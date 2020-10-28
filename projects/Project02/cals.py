@@ -31,7 +31,7 @@ def list_eaten(name, date):
 def list_weights(name):
     for k, vs in table_of_file(os.path.join(name, 'weight.txt')).items():
         print(f'{k} {vs[0]}')
-    
+
 # List the dates for which we have calorie counts
 # cals list dates
 def list_dates(name):
@@ -84,8 +84,8 @@ def new_user(name):
         pass
 
 def date_today():
-   d = datetime.datetime.now()
-   return f'{d.day:02}-{d.month:02}-{d.year}'
+    d = datetime.datetime.now()
+    return f'{d.day:02}-{d.month:02}-{d.year}'
 
 # Add data for today - food and grams
 # cals eaten <name> <food> <grams>

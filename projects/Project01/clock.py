@@ -1,6 +1,5 @@
 #Live clock
 import turtle
-import math
 import time
 
 def hand(length, thickness, angle):

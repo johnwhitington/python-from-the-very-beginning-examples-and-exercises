@@ -75,12 +75,12 @@ def tactic_fork(b):
 #4. Block fork
 def find_two_in_row(b, p):
     if b[p] == '_':
-      for l in lines:
-          if p in l:
-              bl = [b[x] for x in l]
-              if bl.count('X') == 1 and bl.count('O') == 0:
-                  b[p] = 'X'
-                  return True
+        for l in lines:
+            if p in l:
+                bl = [b[x] for x in l]
+                if bl.count('X') == 1 and bl.count('O') == 0:
+                    b[p] = 'X'
+                    return True
     else:
         return False
 
@@ -89,7 +89,7 @@ def tactic_block_fork(b):
         bl = [b[x] for x in l]
         bl2 = [b[x] for x in l2]
         l_fits = bl.count('_') == 2 and bl.count('O') == 1
-        l2_fits = bl.count('_') == 2 and bl.count('O') == 1
+        l2_fits = bl2.count('_') == 2 and bl2.count('O') == 1
         if l_fits and l2_fits and b[i] == '_':
             if find_two_in_row(b, l[0]): return True
             elif find_two_in_row(b, l[1]): return True
