@@ -117,7 +117,7 @@ def print_morse(s):
     for l in s:
         if l == ' ': print('    ', end='')
         else: print_morse_letter(l)
-    print('')    
+    print('')
 
 
 # Four digit code guesser. Reports number a) correct number in correct place
@@ -145,9 +145,9 @@ def check_code_guess(code, guess):
 
 def code_guesser():
     random.seed()
-    a = random.randint(1, 9) 
-    b = random.randint(1, 9) 
-    c = random.randint(1, 9) 
+    a = random.randint(1, 9)
+    b = random.randint(1, 9)
+    c = random.randint(1, 9)
     d = random.randint(1, 9)
     code = [a, b, c, d]
     tries = 1
@@ -161,4 +161,3 @@ def code_guesser():
             i = input()
             guess = [int(i[0]), int(i[1]), int(i[2]), int(i[3])]
     print('Correct. You took ' + str(tries) + ' guesses.')
-

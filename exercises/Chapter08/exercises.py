@@ -37,7 +37,7 @@ def dict_take(a, b):
         except KeyError:
             pass
     return c
-          
+
 
 #5
 def safe_union(a, b):
@@ -56,4 +56,4 @@ def add_exception(s, k):
     if k in s:
         raise KeyError
     else:
-       s.add(k)
+        s.add(k)

@@ -87,4 +87,3 @@ def number_found(sentences, word, filename):
                 print(f'{word} not found in sentence {n}', file=f)
             else:
                 print(f'{word} found at position {p} in sentence {n}', file=f)
-

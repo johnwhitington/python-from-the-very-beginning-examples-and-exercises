@@ -48,26 +48,22 @@ while entered != 'please':
 entered = ''
 
 def ask_for_password():
-  while entered != 'please':
-    print('Please enter the password')
-    entered = input()
+    while entered != 'please':
+        print('Please enter the password')
+        entered = input()
 
 
 def ask_for_password():
-  entered = ''  
-  while entered != 'please':
-    print('Please enter the password')
-    entered = input()
+    entered = '' 
+    while entered != 'please':
+        print('Please enter the password')
+        entered = input()
 
 
 entered = ''
 
 def ask_for_password():
-  global entered
-  while entered != 'please':
-    print('Please enter the password')
-    entered = input()
-
-
-
-
+    global entered
+    while entered != 'please':
+        print('Please enter the password')
+        entered = input()

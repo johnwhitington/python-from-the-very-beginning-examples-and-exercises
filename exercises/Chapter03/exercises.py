@@ -1,6 +1,6 @@
 def print_down_from(n):
     for x in range(n, 0, -1):
-      print(x)
+        print(x)
 
 
 def times_table(n):
@@ -44,9 +44,9 @@ def sentence_checker():
 
 
 def ask_for_password():
-  entered = ''  
-  while entered != 'please':
-    entered = input('Please enter the password\n')
+    entered = ''
+    while entered != 'please':
+        entered = input('Please enter the password\n')
 
 def ask_for_password():
     while input('Please enter the password\n') != 'please':

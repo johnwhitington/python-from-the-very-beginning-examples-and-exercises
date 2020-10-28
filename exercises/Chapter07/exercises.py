@@ -102,10 +102,10 @@ def comp_and(a, b):
 
 #10
 def sum_all(t):
-  if type(t) is int:
-      return t
-  else:
-      total = 0
-      for x in t:
-          total = total + sum_all(x)
-      return total
+    if type(t) is int:
+        return t
+    else:
+        total = 0
+        for x in t:
+            total = total + sum_all(x)
+        return total

@@ -22,7 +22,7 @@ def dict_from_file(filename):
                 if k !='' and v !='':
                     d[int(k)] = v
                 else:
-                   return d
+                    return d
             except ValueError:
                 print(f'{k} is not an integer')
 
@@ -133,7 +133,7 @@ def top(filename):
     lines = []
     with open(filename) as f:
         lines = f.readlines()
-    while(len(lines) > 0):
+    while len(lines) > 0:
         for l in lines[:5]: print(l, end='')
         lines = lines[5:]
         enter = input()

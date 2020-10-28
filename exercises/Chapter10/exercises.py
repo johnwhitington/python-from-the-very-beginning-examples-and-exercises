@@ -32,7 +32,7 @@ def star(x):
 
 #5
 def plot(f, a, b, dy):
-  pos = a
-  while pos <= b:
-      star(f(pos))
-      pos += dy
+    pos = a
+    while pos <= b:
+        star(f(pos))
+        pos += dy

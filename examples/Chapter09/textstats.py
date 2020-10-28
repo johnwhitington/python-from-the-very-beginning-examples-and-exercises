@@ -19,4 +19,3 @@ def stats_from_filename(filename):
         return stats_from_file(f)
 
 gregor_stats = stats_from_filename('gregor.txt')
-
