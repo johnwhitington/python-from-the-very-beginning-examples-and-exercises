@@ -43,7 +43,7 @@ def list_foods():
 def lookup_calories(food):
     table = table_of_file('calories.csv')
     vs = table[food]
-    if vs == None:
+    if vs is None:
         print(f'Food {food} not found')
     else:
         if len(vs) > 1:
@@ -56,7 +56,7 @@ def lookup_calories(food):
 def lookup_weight(name, date):
     table = table_of_file(os.path.join(name, 'weight.csv'))
     vs = table[date]
-    if vs == None:
+    if vs is None:
         print(f'No weight found for {date}')
     elif len(vs) > 0:
         print(f'Weight at {date} was {vs[0]}')
