@@ -16,7 +16,7 @@ def safe_int(s):
         return None
 
 def not_none(x):
-    return x != None
+    return x is not None
 
 def list_sum(l):
     return sum(filter(not_none, map(safe_int, l)))

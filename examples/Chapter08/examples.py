@@ -14,7 +14,7 @@ def found_values(l, d):
     output = []
     for k in l:
         v = d.get(k)
-        if v != None:
+        if v is not None:
             output.append(v)
     return output
 
