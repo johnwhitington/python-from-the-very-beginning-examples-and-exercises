@@ -66,10 +66,10 @@ def letters_not_used(l):
 
 #8
 def dset_of_list(l):
-    set = {}
+    s = {}
     for x in l:
-        set[x] = 0
-    return set
+        s[x] = 0
+    return s
 
 def dset_or(a, b):
     result = {}
