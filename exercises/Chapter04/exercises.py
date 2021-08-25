@@ -72,7 +72,7 @@ def remove_copy(l, x):
 
 
 #Caesar cipher
-alphabet = 'ABCDEFGHIJKLMNOPQRSTUVQXYZ'
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 def rotate(n, a):
     return a[n:] + a[:n]
